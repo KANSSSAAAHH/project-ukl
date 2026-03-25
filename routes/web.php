@@ -7,14 +7,6 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\Admin\AdminProdukController;
-use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\Admin\AdminPesananController;
-use App\Http\Controllers\Admin\AdminPembayaranController;
-use App\Http\Controllers\Admin\AdminPengirimanController;
-use App\Http\Controllers\Admin\AdminReviewController;
-use App\Http\Controllers\Admin\AdminKeranjangController;
-use App\Http\Controllers\Admin\AdminDetailPesananController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
@@ -31,12 +23,12 @@ Route::post('/logout', function () {
 })->name('logout');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/produk', [AdminProdukController::class, 'index'])->name('admin.produk');
-    Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/pesanan', [AdminPesananController::class, 'index'])->name('admin.pesanan');
-    Route::get('/pembayaran', [AdminPembayaranController::class, 'index'])->name('admin.pembayaran');
-    Route::get('/pengiriman', [AdminPengirimanController::class, 'index'])->name('admin.pengiriman');
-    Route::get('/review', [AdminReviewController::class, 'index'])->name('admin.review');
-    Route::get('/keranjang', [AdminKeranjangController::class, 'index'])->name('admin.keranjang');
-    Route::get('/detail-pesanan', [AdminDetailPesananController::class, 'index'])->name('admin.detailpesanan');
+    Route::get('/produk',         function () { return view('admin.produk'); })->name('admin.produk');
+    Route::get('/users',          function () { return view('admin.users'); })->name('admin.users');
+    Route::get('/pesanan',        function () { return view('admin.pesanan'); })->name('admin.pesanan');
+    Route::get('/pembayaran',     function () { return view('admin.pembayaran'); })->name('admin.pembayaran');
+    Route::get('/pengiriman',     function () { return view('admin.pengiriman'); })->name('admin.pengiriman');
+    Route::get('/review',         function () { return view('admin.review'); })->name('admin.review');
+    Route::get('/keranjang',      function () { return view('admin.keranjang'); })->name('admin.keranjang');
+    Route::get('/detail-pesanan', function () { return view('admin.detail_pesanan'); })->name('admin.detailpesanan');
 });
