@@ -1,34 +1,71 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\KontakController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminProdukController;
+use App\Http\Controllers\Admin\AdminKeranjangController;
+use App\Http\Controllers\Admin\AdminPembayaranController;
+use App\Http\Controllers\Admin\AdminPengirimanController;
+use App\Http\Controllers\Admin\AdminPesananController;
+use App\Http\Controllers\Admin\AdminReviewController;
+use App\Http\Controllers\Admin\AdminUsersController;
+use App\Http\Controllers\Admin\AdminDetailPesananController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/about', [AboutController::class, 'index']);
-Route::get('/produk', [ProdukController::class, 'index']);
-Route::get('/kontak', [KontakController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+// ===================================================
+// HALAMAN PUBLIK
+// ===================================================
+Route::get('/',       fn() => view('home'))->name('home');
+Route::get('/about',  fn() => view('about'))->name('about');
+Route::get('/kontak', fn() => view('kontak'))->name('kontak');
 
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/logout', function () {
-    auth()->logout();
-    return redirect('/');
-})->name('logout');
+Route::get('/produk',      [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('produk.show');
 
-Route::prefix('admin')->group(function () {
-    Route::get('/produk',         function () { return view('admin.produk'); })->name('admin.produk');
-    Route::get('/users',          function () { return view('admin.users'); })->name('admin.users');
-    Route::get('/pesanan',        function () { return view('admin.pesanan'); })->name('admin.pesanan');
-    Route::get('/pembayaran',     function () { return view('admin.pembayaran'); })->name('admin.pembayaran');
-    Route::get('/pengiriman',     function () { return view('admin.pengiriman'); })->name('admin.pengiriman');
-    Route::get('/review',         function () { return view('admin.review'); })->name('admin.review');
-    Route::get('/keranjang',      function () { return view('admin.keranjang'); })->name('admin.keranjang');
-    Route::get('/detail-pesanan', function () { return view('admin.detail_pesanan'); })->name('admin.detailpesanan');
+// ===================================================
+// AUTH — dari Breeze
+// ===================================================
+require __DIR__.'/auth.php';
+
+// ===================================================
+// HALAMAN BUTUH LOGIN (user biasa)
+// ===================================================
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// ===================================================
+// ADMIN
+// ===================================================
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard Admin ← TAMBAHAN BARU
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // Produk
+    Route::resource('produk',         AdminProdukController::class);
+
+    // Pesanan & Detail
+    Route::resource('pesanan',        AdminPesananController::class);
+    Route::resource('detail-pesanan', AdminDetailPesananController::class);
+
+    // Pembayaran
+    Route::resource('pembayaran',     AdminPembayaranController::class);
+
+    // Pengiriman
+    Route::resource('pengiriman',     AdminPengirimanController::class);
+
+    // Keranjang
+    Route::resource('keranjang',      AdminKeranjangController::class);
+
+    // Review
+    Route::resource('review',         AdminReviewController::class);
+
+    // Users
+    Route::resource('users',          AdminUsersController::class);
+
 });

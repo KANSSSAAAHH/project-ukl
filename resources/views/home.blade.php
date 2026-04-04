@@ -604,7 +604,6 @@
             <li><a href="{{ url('/') }}" class="active">Home</a></li>
             <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
             <li><a href="{{ url('/produk') }}">Produk</a></li>
-            <li><a href="{{ url('/kontak') }}">Kontak</a></li>
             @auth
                 <li><a href="{{ url('/keranjang') }}"><i class="fa-solid fa-basket-shopping"></i> Keranjang</a></li>
                 <li>
@@ -630,7 +629,6 @@
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/about') }}">Tentang Kami</a>
         <a href="{{ url('/produk') }}">Produk</a>
-        <a href="{{ url('/kontak') }}">Kontak</a>
         @auth
             <a href="{{ url('/keranjang') }}">Keranjang</a>
         @else
@@ -660,9 +658,6 @@
                 <div class="hero-buttons">
                     <a href="{{ url('/produk') }}" class="btn-primary">
                         <i class="fa-solid fa-shop"></i> Lihat Produk
-                    </a>
-                    <a href="{{ url('/kontak') }}" class="btn-outline">
-                        <i class="fa-solid fa-phone"></i> Hubungi Kami
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -965,7 +960,6 @@
                     <li><a href="{{ url('/') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Home</a></li>
                     <li><a href="{{ url('/about') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Tentang Kami</a></li>
                     <li><a href="{{ url('/produk') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Produk</a></li>
-                    <li><a href="{{ url('/kontak') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Kontak</a></li>
                 </ul>
             </div>
             <div class="footer-col">

@@ -11,55 +11,73 @@ class AdminProdukController extends Controller
 {
     public function index()
     {
-        $produk = Produk::all();
-        return response()->json(['success' => true, 'data' => $produk]);
+        $produk = Produk::orderBy('id_produk', 'desc')->get();
+        return view('admin.produk.index', compact('produk'));
     }
 
-    public function show($id)
+    public function create()
     {
-        $produk = Produk::find($id);
-        if (!$produk) {
-            return response()->json(['success' => false, 'message' => 'Produk tidak ditemukan'], 404);
-        }
-        return response()->json(['success' => true, 'data' => $produk]);
+        return view('admin.produk.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nama_produk' => 'required',
-            'kategori'    => 'required',
-            'harga'       => 'required|numeric',
+            'nama_produk' => 'required|string|max:255',
+            'kategori'    => 'required|in:kering,basah',
+            'harga'       => 'required|integer|min:0',
+            'deskripsi'   => 'required|string',
             'status'      => 'required|in:aktif,nonaktif',
-            'foto'        => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'foto'        => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        $fotoNama = null;
-        if ($request->hasFile('foto')) {
-            $fotoNama = $request->file('foto')->store('produk', 'public');
-        }
+        $fotoPath = $request->file('foto')->store('produk', 'public');
 
-        $produk = Produk::create([
+        Produk::create([
             'nama_produk' => $request->nama_produk,
             'kategori'    => $request->kategori,
             'harga'       => $request->harga,
             'deskripsi'   => $request->deskripsi,
-            'foto'        => $fotoNama,
             'status'      => $request->status,
+            'foto'        => $fotoPath,
         ]);
 
-        return response()->json(['success' => true, 'message' => 'Produk berhasil ditambahkan', 'data' => $produk], 201);
+        return redirect()->route('admin.produk.index')
+                         ->with('success', 'Produk berhasil ditambahkan!');
     }
 
-    public function update(Request $request, $id)
+    public function show(string $id)
     {
-        $produk = Produk::find($id);
-        if (!$produk) {
-            return response()->json(['success' => false, 'message' => 'Produk tidak ditemukan'], 404);
-        }
+        $produk = Produk::findOrFail($id);
+        return view('admin.produk.show', compact('produk'));
+    }
 
+    public function edit(string $id)
+    {
+        $produk = Produk::findOrFail($id);
+        return view('admin.produk.edit', compact('produk'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $produk = Produk::findOrFail($id);
+
+        $request->validate([
+            'nama_produk' => 'required|string|max:255',
+            'kategori'    => 'required|in:kering,basah',
+            'harga'       => 'required|integer|min:0',
+            'deskripsi'   => 'required|string',
+            'status'      => 'required|in:aktif,nonaktif',
+            'foto'        => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        // Update foto hanya kalau ada file baru
         if ($request->hasFile('foto')) {
-            if ($produk->foto) Storage::disk('public')->delete($produk->foto);
+            // Hapus foto lama
+            if ($produk->foto) {
+                Storage::disk('public')->delete($produk->foto);
+            }
+            // Simpan foto baru
             $produk->foto = $request->file('foto')->store('produk', 'public');
         }
 
@@ -70,17 +88,19 @@ class AdminProdukController extends Controller
         $produk->status      = $request->status;
         $produk->save();
 
-        return response()->json(['success' => true, 'message' => 'Produk berhasil diupdate', 'data' => $produk]);
+        return redirect()->route('admin.produk.index')
+                         ->with('success', 'Produk berhasil diupdate!');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
-        $produk = Produk::find($id);
-        if (!$produk) {
-            return response()->json(['success' => false, 'message' => 'Produk tidak ditemukan'], 404);
+        $produk = Produk::findOrFail($id);
+        if ($produk->foto) {
+            Storage::disk('public')->delete($produk->foto);
         }
-        if ($produk->foto) Storage::disk('public')->delete($produk->foto);
         $produk->delete();
-        return response()->json(['success' => true, 'message' => 'Produk berhasil dihapus']);
+
+        return redirect()->route('admin.produk.index')
+                         ->with('success', 'Produk berhasil dihapus!');
     }
 }

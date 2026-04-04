@@ -39,7 +39,7 @@
         }
 
         /* ============================================================
-           NAVBAR (sama persis dengan referensi)
+           NAVBAR
         ============================================================ */
         nav {
             position: fixed;
@@ -126,7 +126,7 @@
         .mobile-menu a:hover { color: var(--crimson); }
 
         /* ============================================================
-           HERO ABOUT — banner dengan foto founder overlap
+           HERO ABOUT
         ============================================================ */
         .about-hero {
             min-height: 520px;
@@ -137,30 +137,26 @@
             align-items: flex-end;
         }
 
-        /* Latar merah gelap gradient */
         .about-hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 55%, #9B2020 100%);
+            background: var(--cream);
             z-index: 0;
         }
-
-        /* Pola garis dekoratif */
         .about-hero-bg::after {
             content: '';
             position: absolute;
             inset: 0;
             background-image: repeating-linear-gradient(
-                45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px,
+                45deg, rgba(201,146,58,0.03) 0, rgba(201,146,58,0.03) 1px,
                 transparent 1px, transparent 60px
             );
         }
 
-        /* Blob cahaya emas */
         .hero-blob-gold {
             position: absolute;
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(201,146,58,0.25) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(201,146,58,0.12) 0%, transparent 70%);
             top: -100px; right: -80px;
             border-radius: 50%;
             filter: blur(60px);
@@ -187,47 +183,45 @@
 
         .about-hero-text { padding-bottom: 70px; }
 
+        /* PERBAIKAN: breadcrumb pakai warna gelap karena bg cream */
         .hero-breadcrumb {
             display: flex; align-items: center; gap: 8px;
             font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; color: rgba(255,255,255,0.6);
+            text-transform: uppercase; color: var(--text-light);
             margin-bottom: 20px;
         }
-        .hero-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-        .hero-breadcrumb a:hover { color: var(--gold-light); }
-        .hero-breadcrumb span { color: var(--gold-light); }
+        .hero-breadcrumb a { color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+        .hero-breadcrumb a:hover { color: var(--gold); }
+        .hero-breadcrumb span { color: var(--gold); }
 
+        /* PERBAIKAN: badge pakai warna gold solid karena bg cream */
         .about-hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(201,146,58,0.2); border: 1px solid rgba(201,146,58,0.5);
-            color: var(--gold-light); font-size: 0.78rem; font-weight: 600;
+            background: rgba(201,146,58,0.15); border: 1px solid rgba(201,146,58,0.4);
+            color: var(--gold); font-size: 0.78rem; font-weight: 600;
             letter-spacing: 0.08em; text-transform: uppercase;
             padding: 6px 14px; border-radius: 50px; margin-bottom: 22px;
         }
 
+        /* PERBAIKAN: judul pakai warna gelap karena bg cream */
         .about-hero-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.2rem, 5vw, 3.6rem);
             font-weight: 800; line-height: 1.15;
-            color: var(--white); margin-bottom: 20px;
+            color: var(--text-dark); margin-bottom: 20px;
         }
-        .about-hero-title em { font-style: italic; color: var(--gold-light); }
+        .about-hero-title em { font-style: italic; color: var(--crimson); }
 
+        /* PERBAIKAN: deskripsi pakai warna text-mid */
         .about-hero-desc {
-            color: rgba(255,255,255,0.8);
+            color: var(--text-mid);
             font-size: 1.05rem; line-height: 1.8;
             max-width: 500px;
         }
 
-        /* Foto founder — melayang ke atas, overlap ke section berikut */
         .about-hero-photo {
             position: relative;
             align-self: flex-end;
-        }
-
-        .photo-frame {
-            position: relative;
-            display: inline-block;
         }
 
         .photo-frame img {
@@ -237,21 +231,38 @@
             object-position: top center;
             border-radius: 24px 24px 0 0;
             display: block;
-            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.35));
+            background: #f5f0e8;
+            box-shadow:
+                0 0 0 1px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.12),
+                inset 0 0 0 1px rgba(0,0,0,0.06);
+            filter: drop-shadow(0 4px 24px rgba(0,0,0,0.18));
         }
 
-        /* Dekorasi bingkai emas */
+        .photo-frame {
+            position: relative;
+            display: inline-block;
+            background: #fdf6ed;
+            border-radius: 24px 24px 0 0;
+            padding: 12px 12px 0;
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.1),
+                0 20px 60px rgba(0,0,0,0.15),
+                inset 0 0 0 1px rgba(0,0,0,0.06);
+        }
+
         .photo-frame::before {
             content: '';
             position: absolute;
-            top: -12px; left: -12px;
-            width: 100%; height: 100%;
-            border: 3px solid rgba(201,146,58,0.5);
+            top: -8px; left: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 8px);
+            border: 2px solid rgba(0,0,0,0.12);
             border-radius: 28px 28px 0 0;
             pointer-events: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        /* Badge nama di pojok foto */
         .photo-name-badge {
             position: absolute;
             bottom: 20px; left: -20px;
@@ -293,7 +304,7 @@
         .ornament-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
 
         /* ============================================================
-           SECTION — STORY (kisah pendiri)
+           STORY
         ============================================================ */
         .story-section { background: var(--white); padding: 120px 40px 100px; }
 
@@ -304,7 +315,6 @@
             align-items: center;
         }
 
-        /* Kartu kutipan */
         .story-quote-card {
             background: linear-gradient(135deg, var(--crimson-deep), var(--crimson));
             border-radius: 24px;
@@ -341,15 +351,12 @@
             font-size: 0.75rem; color: var(--gold-light); margin-top: 2px;
         }
 
-        /* Teks cerita */
         .story-text .section-label { color: var(--gold); }
-
         .story-text p {
             color: var(--text-mid); font-size: 0.97rem; line-height: 1.85;
             margin-bottom: 18px;
         }
 
-        /* Timeline mini */
         .timeline { margin-top: 32px; }
         .timeline-item {
             display: flex; gap: 20px; margin-bottom: 24px;
@@ -398,9 +405,7 @@
         .nilai-header .section-label { color: var(--gold-light); justify-content: center; }
         .nilai-header .section-title { color: var(--white); text-align: center; }
         .nilai-header .ornament { justify-content: center; }
-        .nilai-header .ornament-line {
-            background: linear-gradient(90deg,transparent,rgba(232,184,109,0.4),transparent);
-        }
+        .nilai-header .ornament-line { background: linear-gradient(90deg,transparent,rgba(232,184,109,0.4),transparent); }
         .nilai-header .ornament-dot { background: var(--gold-light); }
 
         .nilai-grid {
@@ -417,10 +422,7 @@
             padding: 36px 32px;
             transition: background var(--transition), transform var(--transition);
         }
-        .nilai-card:hover {
-            background: rgba(255,255,255,0.14);
-            transform: translateY(-6px);
-        }
+        .nilai-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-6px); }
 
         .nilai-card-icon {
             width: 56px; height: 56px;
@@ -432,9 +434,7 @@
             margin-bottom: 20px;
             transition: background var(--transition);
         }
-        .nilai-card:hover .nilai-card-icon {
-            background: rgba(201,146,58,0.35);
-        }
+        .nilai-card:hover .nilai-card-icon { background: rgba(201,146,58,0.35); }
 
         .nilai-card h3 {
             font-family: 'Playfair Display', serif;
@@ -442,9 +442,7 @@
             color: var(--white); margin-bottom: 14px;
         }
 
-        .nilai-card ul {
-            list-style: none; padding: 0;
-        }
+        .nilai-card ul { list-style: none; padding: 0; }
         .nilai-card ul li {
             font-size: 0.88rem; color: rgba(255,255,255,0.8);
             line-height: 1.7; padding: 5px 0;
@@ -483,10 +481,7 @@
             overflow: hidden;
             transition: transform var(--transition), box-shadow var(--transition);
         }
-        .visimisi-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-warm);
-        }
+        .visimisi-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-warm); }
         .visimisi-card::after {
             content: '';
             position: absolute; bottom: -40px; right: -40px;
@@ -510,14 +505,9 @@
             color: var(--crimson); margin-bottom: 16px;
         }
 
-        .visimisi-card p {
-            color: var(--text-mid); font-size: 0.95rem; line-height: 1.8;
-            margin-bottom: 20px;
-        }
+        .visimisi-card p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; }
 
-        .visimisi-card ul {
-            list-style: none; padding: 0;
-        }
+        .visimisi-card ul { list-style: none; padding: 0; }
         .visimisi-card ul li {
             display: flex; align-items: flex-start; gap: 12px;
             font-size: 0.88rem; color: var(--text-mid);
@@ -525,17 +515,12 @@
             border-bottom: 1px solid rgba(201,146,58,0.12);
         }
         .visimisi-card ul li:last-child { border-bottom: none; }
-        .visimisi-card ul li i {
-            color: var(--crimson); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem;
-        }
+        .visimisi-card ul li i { color: var(--crimson); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem; }
 
         /* ============================================================
-           STATS BAR — angka menarik
+           STATS BAR
         ============================================================ */
-        .stats-bar {
-            background: var(--brown);
-            padding: 60px 40px;
-        }
+        .stats-bar { background: var(--brown); padding: 60px 40px; }
 
         .stats-inner {
             max-width: 1100px; margin: 0 auto;
@@ -543,27 +528,22 @@
             gap: 20px; text-align: center;
         }
 
-        .stat-box {
-            padding: 28px 20px;
-            border-right: 1px solid rgba(255,255,255,0.1);
-        }
+        .stat-box { padding: 28px 20px; border-right: 1px solid rgba(255,255,255,0.1); }
         .stat-box:last-child { border-right: none; }
 
         .stat-box-num {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem; font-weight: 800;
-            color: var(--gold-light); line-height: 1;
-            margin-bottom: 8px;
+            color: var(--gold-light); line-height: 1; margin-bottom: 8px;
         }
 
         .stat-box-label {
             font-size: 0.82rem; font-weight: 600;
-            color: rgba(255,255,255,0.6); text-transform: uppercase;
-            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em;
         }
 
         /* ============================================================
-           FOOTER (sama persis dengan referensi)
+           FOOTER
         ============================================================ */
         footer { background: var(--brown); color: rgba(255,255,255,0.7); padding: 60px 40px 32px; }
         .footer-grid {
@@ -656,7 +636,6 @@
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/about') }}" class="active">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}">Produk</a></li>
-        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
         @auth
             <li><a href="{{ url('/keranjang') }}"><i class="fa-solid fa-basket-shopping"></i> Keranjang</a></li>
             <li>
@@ -682,7 +661,6 @@
     <a href="{{ url('/') }}">Home</a>
     <a href="{{ url('/about') }}" style="color:var(--crimson);font-weight:700;">Tentang Kami</a>
     <a href="{{ url('/produk') }}">Produk</a>
-    <a href="{{ url('/kontak') }}">Kontak</a>
     @auth
         <a href="{{ url('/keranjang') }}">Keranjang</a>
     @else
@@ -724,7 +702,6 @@
         {{-- Foto founder --}}
         <div class="about-hero-photo">
             <div class="photo-frame">
-                {{-- Simpan di: public/images/denanik.jpeg --}}
                 <img
                     src="{{ asset('images/denanik.jpeg') }}"
                     alt="Bu Nanik – Pendiri PawonLokal"
@@ -772,7 +749,7 @@
     <div class="max-w">
         <div class="story-grid">
 
-            {{-- Kartu kutipan + foto --}}
+            {{-- Kartu kutipan + timeline --}}
             <div class="reveal-left">
                 <div class="story-quote-card">
                     <p>
@@ -793,7 +770,6 @@
                     </div>
                 </div>
 
-                {{-- Timeline perjalanan --}}
                 <div class="timeline" style="margin-top:40px;">
                     <div class="timeline-item">
                         <div class="timeline-year">2010</div>
@@ -869,7 +845,6 @@
                     keluarga Indonesia — dari meja lebaran, ulang tahun, hingga pernikahan.
                 </p>
 
-                {{-- Feature highlights --}}
                 <div style="margin-top:32px; display:flex; flex-direction:column; gap:18px;">
                     <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(139,26,26,0.05);border-radius:14px;border-left:4px solid var(--crimson);">
                         <i class="fa-solid fa-leaf" style="color:var(--crimson);font-size:1.2rem;flex-shrink:0;"></i>
@@ -916,11 +891,8 @@
         </div>
 
         <div class="nilai-grid">
-            {{-- Nilai --}}
             <div class="nilai-card reveal">
-                <div class="nilai-card-icon">
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                </div>
+                <div class="nilai-card-icon"><i class="fa-solid fa-star-half-stroke"></i></div>
                 <h3>Nilai Kami</h3>
                 <ul>
                     <li>Rasa yang Terjaga — Mengutamakan cita rasa autentik yang konsisten dan berkualitas.</li>
@@ -930,11 +902,8 @@
                 </ul>
             </div>
 
-            {{-- Komitmen --}}
             <div class="nilai-card reveal reveal-delay-1">
-                <div class="nilai-card-icon">
-                    <i class="fa-solid fa-handshake"></i>
-                </div>
+                <div class="nilai-card-icon"><i class="fa-solid fa-handshake"></i></div>
                 <h3>Komitmen Kami</h3>
                 <ul>
                     <li>Menjaga kualitas rasa dengan standar tinggi dan evaluasi produk setiap hari.</li>
@@ -964,11 +933,8 @@
         </div>
 
         <div class="visimisi-grid">
-            {{-- Visi --}}
             <div class="visimisi-card reveal">
-                <div class="visimisi-card-icon">
-                    <i class="fa-solid fa-eye"></i>
-                </div>
+                <div class="visimisi-card-icon"><i class="fa-solid fa-eye"></i></div>
                 <h3>Visi</h3>
                 <p>
                     Menjadi merek kue kering dan kue basah nusantara yang terpercaya,
@@ -976,11 +942,8 @@
                 </p>
             </div>
 
-            {{-- Misi --}}
             <div class="visimisi-card reveal reveal-delay-1">
-                <div class="visimisi-card-icon">
-                    <i class="fa-solid fa-bullseye"></i>
-                </div>
+                <div class="visimisi-card-icon"><i class="fa-solid fa-bullseye"></i></div>
                 <h3>Misi</h3>
                 <p>Mendukung dan melestarikan kue tradisional Indonesia agar terus dikenal dan dicintai semua generasi.</p>
                 <ul>
@@ -1018,7 +981,6 @@
                 <li><a href="{{ url('/') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Home</a></li>
                 <li><a href="{{ url('/about') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Tentang Kami</a></li>
                 <li><a href="{{ url('/produk') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Produk</a></li>
-                <li><a href="{{ url('/kontak') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i>Kontak</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -1060,7 +1022,6 @@
 
 
 <script>
-    // Navbar scroll
     const navbar    = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu= document.getElementById('mobileMenu');
@@ -1081,7 +1042,6 @@
         });
     });
 
-    // Reveal on scroll
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1093,7 +1053,6 @@
     }, { threshold: 0.12 });
     revealEls.forEach(el => io.observe(el));
 
-    // Counter animation
     const counters = document.querySelectorAll('[data-count]');
     const counterIO = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
