@@ -1,7 +1,4 @@
 <?php
-// ============================================================
-// FILE 1: app/Models/Review.php
-// ============================================================
 
 namespace App\Models;
 
@@ -33,10 +30,6 @@ class Review extends Model
     }
 }
 
-
-// ============================================================
-// FILE 2: app/Http/Controllers/Admin/AdminReviewController.php
-// ============================================================
 
 namespace App\Http\Controllers\Admin;
 
