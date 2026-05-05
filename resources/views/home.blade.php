@@ -227,24 +227,20 @@
         .stat-label { font-size: 0.78rem; color: var(--text-light); font-weight: 500; margin-top: 2px; }
 
         .hero-visual { position: relative; animation: fadeInRight 1s 0.3s ease both; }
-        .hero-img-main {
-            width: 100%; border-radius: 24px; box-shadow: var(--shadow-warm);
-            object-fit: cover; height: 440px;
+        .hero-video-container {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-warm);
+            position: relative;
+            background: #000;
         }
-        .hero-float-card {
-            position: absolute; background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px); border-radius: 14px; padding: 12px 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.8);
+        .hero-video {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            display: block;
         }
-        .hero-float-card-1 { bottom: 32px; left: -24px; animation: floatCard 6s ease-in-out infinite; }
-        .hero-float-card-2 { top: 32px; right: -24px; animation: floatCard 6s 1s ease-in-out infinite; }
-        @keyframes floatCard {
-            0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); }
-        }
-        .float-card-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
-        .float-card-value { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-dark); font-weight: 700; }
-        .float-stars { color: var(--gold); font-size: 0.85rem; margin-top: 2px; }
-
         /* ============================================================
            SHARED
         ============================================================ */
@@ -270,6 +266,59 @@
         .ornament.centered { justify-content: center; }
         .ornament-line { flex: 1; height: 1px; background: linear-gradient(90deg,transparent,var(--gold-light),transparent); max-width: 80px; }
         .ornament-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+
+        /* ============================================================
+           PROSES KUALITAS
+        ============================================================ */
+        .proses-kualitas {
+            background: var(--cream);
+            padding: 100px 40px;
+        }
+        .proses-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .proses-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(139,26,26,0.1);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .proses-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(139,26,26,0.18);
+        }
+        .proses-video-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            background: #000;
+        }
+        .proses-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .proses-card-body {
+            padding: 24px;
+            text-align: center;
+        }
+        .proses-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--crimson);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .proses-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
 
         /* ============================================================
            ABOUT
@@ -578,6 +627,7 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .products-two-grid { grid-template-columns: 1fr 1fr; }
             .review-card { width: calc(50% - 14px); }
+            .proses-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             section { padding: 70px 24px; }
@@ -588,6 +638,7 @@
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .products-two-grid { grid-template-columns: 1fr; max-width: 400px; }
             .review-card { width: 85vw; }
+            .proses-video-container { height: 250px; }
         }
     </style>
 </head>
@@ -636,7 +687,7 @@
         @endauth
     </div>
 
-    {{-- ===== HERO ===== --}}
+    {{-- ===== HERO DENGAN VIDEO ===== --}}
     <section class="hero">
         <div class="hero-blob hero-blob-1"></div>
         <div class="hero-blob hero-blob-2"></div>
@@ -677,20 +728,61 @@
             </div>
 
             <div class="hero-visual">
-                <img class="hero-img-main" src="{{ asset('images/5.png') }}" alt="Kue Tradisional PawonLokal">
-                <div class="hero-float-card hero-float-card-1">
-                    <div class="float-card-title">Bestseller</div>
-                    <div class="float-card-value">Klepon Pandan</div>
-                    <div class="float-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
+                <div class="hero-video-container">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="{{ asset('videos/kue1.mp4') }}" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ===== KUALITAS TERBAIK DIMULAI DARI PROSES ===== --}}
+    <section class="proses-kualitas">
+        <div class="max-w">
+            <div class="section-header centered reveal">
+                <div class="section-label" style="justify-content:center;">
+                    <i class="fa-solid fa-award"></i> Proses Pembuatan
+                </div>
+                <div class="ornament centered">
+                    <div class="ornament-line"></div>
+                    <div class="ornament-dot"></div>
+                    <div class="ornament-line"></div>
+                </div>
+                <h2 class="section-title">Kualitas Terbaik Dimulai dari <em>Proses</em></h2>
+                <p class="section-sub" style="margin: 0 auto;">
+                    Kami memastikan setiap tahapan dikerjakan dengan penuh ketelitian, standar tinggi, dan tenaga terampil.
+                </p>
+            </div>
+
+            <div class="proses-grid">
+                {{-- Video Proses Menjahit/Membuat --}}
+                <div class="proses-card reveal reveal-delay-1">
+                    <div class="proses-video-container">
+                        <video class="proses-video" autoplay muted loop playsinline>
+                            <source src="{{ asset('videos/pembuatan-kue.mp4') }}" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                    </div>
+                    <div class="proses-card-body">
+                        <h3 class="proses-card-title">Proses Pembuatan</h3>
+                        <p class="proses-card-desc">Ketelitian dalam setiap tahapan pembuatan kue</p>
                     </div>
                 </div>
-                <div class="hero-float-card hero-float-card-2">
-                    <div class="float-card-title">Pengiriman</div>
-                    <div class="float-card-value">Hari Ini</div>
-                    <div style="margin-top:4px;font-size:0.75rem;color:var(--text-light);">Pesan sebelum pkl 12.00</div>
+
+                {{-- Video Proses Custom/Kemasan --}}
+                <div class="proses-card reveal reveal-delay-2">
+                    <div class="proses-video-container">
+                        <video class="proses-video" autoplay muted loop playsinline>
+                            <source src="{{ asset('videos/packing-kue.mp4') }}" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                    </div>
+                    <div class="proses-card-body">
+                        <h3 class="proses-card-title">Proses Pengemasan</h3>
+                        <p class="proses-card-desc">Dari proses hingga produk jadi siap antar</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -770,7 +862,7 @@
             <div class="products-two-grid reveal reveal-delay-1">
                 {{-- Kue Basah --}}
                 <a href="{{ url('/produk') }}?kategori=basah" class="product-card-white" style="text-decoration:none;">
-                    <img src="{{ asset('images/klepon.png') }}" alt="Kue Basah">
+                    <img src="{{ asset('images/donatvariasi.png') }}" alt="Kue Basah">
                     <div class="product-card-white-body">
                         <div class="product-card-white-tag">Kue Basah</div>
                         <div class="product-card-white-name">Kue Basah Tradisional</div>
@@ -779,7 +871,7 @@
                             Dibuat fresh setiap hari tanpa pengawet.
                         </div>
                         <div class="product-card-white-footer">
-                            <div class="product-card-white-price">Mulai Rp 15.000</div>
+                            <div class="product-card-white-price">Mulai Rp 3.500</div>
                             <div class="product-card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                         </div>
                     </div>
@@ -796,7 +888,7 @@
                             untuk hampers dan oleh-oleh spesial.
                         </div>
                         <div class="product-card-white-footer">
-                            <div class="product-card-white-price">Mulai Rp 50.000</div>
+                            <div class="product-card-white-price">Mulai Rp 120.000</div>
                             <div class="product-card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                         </div>
                     </div>
@@ -934,7 +1026,7 @@
             <a href="{{ url('/produk') }}" class="btn-white">
                 <i class="fa-solid fa-shop"></i> Pesan Sekarang
             </a>
-            <a href="https://wa.me/62812345678" target="_blank" class="btn-outline-white">
+            <a href="https://wa.me/6285232411498" target="_blank" class="btn-outline-white">
                 <i class="fa-brands fa-whatsapp"></i> Chat via WhatsApp
             </a>
         </div>
@@ -951,7 +1043,7 @@
                     <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://wa.me/6285232411498" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -981,7 +1073,7 @@
                 </div>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-phone"></i>
-                    <span>+62 812-3456-7890</span>
+                    <span>+62 852-3241-1498</span>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-envelope"></i>

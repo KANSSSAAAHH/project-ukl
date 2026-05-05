@@ -297,7 +297,7 @@ footer { background: var(--brown); color: rgba(255,255,255,0.7); padding: 60px 4
             <i class="fa-solid fa-store"></i> Toko PawonLokal
         </div>
         <h1>Temukan Kue <em>Favoritmu</em></h1>
-        <p>Dari kue basah yang lembut hingga kue kering yang renyah — semuanya ada di sini!</p>
+        <p>Dari kue basah yang lembut hingga kue kering yang renyah semuanya ada di sini!</p>
         <form method="GET" action="{{ url('/produk') }}">
             <input type="hidden" name="kategori" value="{{ request('kategori') }}">
             <div class="search-box">
