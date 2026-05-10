@@ -351,7 +351,7 @@ html, body {
 
         {{-- Logo & Judul --}}
         <div class="login-logo">
-            <img src="{{ asset('images/Logo.png') }}" alt="PawonLokal Logo"
+            <img src="{{ asset('images/LogoPL2.png') }}" alt="PawonLokal Logo"
                  onerror="this.style.display='none'">
             <div class="login-logo-title">LOGIN</div>
             <div class="login-logo-sub">Masuk ke akun PawonLokal kamu</div>

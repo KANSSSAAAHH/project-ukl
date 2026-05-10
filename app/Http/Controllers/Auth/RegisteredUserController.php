@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
             'nama'     => $request->nama,
             'email'    => $request->email,
             'no_hp'    => $request->no_hp,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password), // ← hash manual, JANGAN andalkan cast
             'role'     => 'customer',
         ]);
 
@@ -40,6 +40,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect('/user/home');
     }
 }

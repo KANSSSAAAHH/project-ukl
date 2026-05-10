@@ -11,10 +11,9 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $primaryKey = 'id_user';
-    protected $keyType = 'int';
-    public $incrementing = true;
-
-    public $timestamps = false;
+    protected $keyType    = 'int';
+    public $incrementing  = true;
+    public $timestamps    = false;
 
     protected $fillable = [
         'nama',
@@ -29,15 +28,21 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // ← HAPUS 'password' => 'hashed' agar tidak double-hash
     protected function casts(): array
     {
         return [
-            'password' => 'hashed',
+            'email_verified_at' => 'datetime',
         ];
     }
 
     public function getAuthIdentifierName()
     {
         return 'id_user';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->id_user;
     }
 }

@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
             return redirect('/admin/dashboard');
         }
 
-        return redirect('/');
+        return redirect('/user/home');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -35,6 +35,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login'); // ← setelah logout ke halaman login
+        return redirect('/'); //
     }
 }

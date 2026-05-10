@@ -20,8 +20,9 @@
 body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--text-dark); }
 .wrapper { display: flex; min-height: 100vh; }
 
-/* SIDEBAR */
-.sidebar { width: var(--sidebar-w); background: var(--sidebar-bg); position: fixed; top: 0; left: 0; bottom: 0; z-index: 300; display: flex; flex-direction: column; overflow-y: auto; }
+/* ── SIDEBAR ── */
+.sidebar { width: var(--sidebar-w); background: var(--sidebar-bg); position: fixed; top: 0; left: 0; bottom: 0; z-index: 300; display: flex; flex-direction: column; overflow-y: auto; transition: transform var(--tr); }
+.sidebar::-webkit-scrollbar { width: 0; }
 .sidebar-logo { padding: 24px 20px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .sidebar-logo-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 800; color: var(--white); }
 .sidebar-logo-sub { font-size: 0.65rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; }
@@ -31,73 +32,138 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
 .sidebar nav a i { width: 18px; text-align: center; font-size: 0.9rem; }
 .sidebar nav a:hover { background: rgba(255,255,255,0.07); color: var(--white); }
 .sidebar nav a.active { background: linear-gradient(135deg, var(--crimson), var(--crimson-soft)); color: var(--white); box-shadow: 0 4px 16px rgba(139,26,26,0.4); }
+.nav-badge { margin-left: auto; background: var(--crimson-soft); color: var(--white); font-size: 0.62rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; }
 .sidebar-foot { margin-top: auto; padding: 12px 8px 16px; border-top: 1px solid rgba(255,255,255,0.06); }
-.sidebar-foot a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.85rem; }
-.sidebar-foot a:hover { background: rgba(231,76,60,0.15); color: #f87171; }
+.sidebar-foot-link { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.85rem; font-weight: 500; transition: background var(--tr), color var(--tr); background: none; border: none; cursor: pointer; width: 100%; font-family: inherit; }
+.sidebar-foot-link:hover { background: rgba(231,76,60,0.15); color: #f87171; }
+.sidebar-foot-link i { width: 18px; text-align: center; }
 
-/* MAIN */
+/* ── MOBILE OVERLAY ── */
+.sidebar-overlay { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 290; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.sidebar-overlay.show { opacity: 1; pointer-events: auto; }
+
+/* ── MAIN ── */
 .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; }
-.topbar { background: rgba(253,246,237,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,146,58,0.15); padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; }
+
+/* ── TOPBAR ── */
+.topbar { background: rgba(253,246,237,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,146,58,0.15); padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; transition: box-shadow var(--tr); }
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 7px; border-radius: 8px; color: var(--text-light); font-size: 1rem; transition: background var(--tr); }
+.topbar-hamburger:hover { background: var(--cream-dark); }
 .topbar-title { font-weight: 700; font-size: 1rem; color: var(--text-dark); }
 .topbar-breadcrumb { font-size: 0.75rem; color: var(--text-light); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
 .topbar-breadcrumb span { color: var(--crimson); font-weight: 600; }
+
+/* ── CONTENT ── */
 .content { padding: 28px 32px; flex: 1; }
 
-/* PAGE HEADER */
-.page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+/* ── PAGE HEADER ── */
+.page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; gap: 16px; }
 .page-header h1 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--text-dark); }
 .page-header p { font-size: 0.82rem; color: var(--text-light); margin-top: 2px; }
-.btn-tambah { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--crimson), var(--crimson-soft)); color: var(--white); padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 16px rgba(139,26,26,0.3); transition: transform var(--tr); }
-.btn-tambah:hover { transform: translateY(-2px); }
+.btn-tambah { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--crimson), var(--crimson-soft)); color: var(--white); padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 16px rgba(139,26,26,0.3); transition: transform var(--tr), box-shadow var(--tr); white-space: nowrap; flex-shrink: 0; }
+.btn-tambah:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139,26,26,0.38); }
 
-/* ALERT */
-.alert-success { background: #dcfce7; border: 1px solid #bbf7d0; color: #15803d; padding: 12px 18px; border-radius: 10px; margin-bottom: 20px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+/* ── ALERT ── */
+.alert-success { background: #dcfce7; border: 1px solid #bbf7d0; color: #15803d; padding: 12px 18px; border-radius: 10px; margin-bottom: 20px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 8px; animation: fadeDown 0.4s ease; }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
 
-/* CARD TABLE */
-.card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+/* ── TOOLBAR ── */
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.toolbar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; }
+
+.search-box { display: flex; align-items: center; gap: 8px; background: var(--white); border: 1.5px solid #e8d8c4; border-radius: 10px; padding: 9px 14px; width: 260px; transition: border-color var(--tr), box-shadow var(--tr); }
+.search-box:focus-within { border-color: var(--crimson); box-shadow: 0 0 0 3px rgba(139,26,26,0.08); }
+.search-box i { color: var(--text-light); font-size: 0.82rem; flex-shrink: 0; }
+.search-box input { border: none; background: none; outline: none; font-size: 0.82rem; font-family: inherit; color: var(--text-dark); width: 100%; }
+.search-box input::placeholder { color: var(--text-light); }
+
+.filter-sel { background: var(--white); border: 1.5px solid #e8d8c4; border-radius: 10px; padding: 9px 12px; font-size: 0.8rem; font-family: inherit; color: var(--text-mid); cursor: pointer; outline: none; transition: border-color var(--tr); appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239E7650' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+.filter-sel:focus { border-color: var(--crimson); }
+
+.result-count { font-size: 0.75rem; color: var(--text-light); white-space: nowrap; }
+.result-count strong { color: var(--text-dark); font-weight: 700; }
+
+/* ── CARD ── */
+.card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; animation: fadeUp 0.4s ease both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── TABLE ── */
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
-thead th { background: #faf5ef; padding: 12px 16px; text-align: left; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-mid); border-bottom: 1px solid #f0e8de; }
+thead th { background: #faf5ef; padding: 12px 16px; text-align: left; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-mid); border-bottom: 1px solid #f0e8de; white-space: nowrap; }
+tbody tr { transition: background var(--tr); }
 tbody tr:hover { background: #fdf8f4; }
 tbody td { padding: 13px 16px; font-size: 0.83rem; border-bottom: 1px solid #f7f1eb; vertical-align: middle; color: var(--text-dark); }
 tbody tr:last-child td { border-bottom: none; }
+tr.row-hidden { display: none; }
 
+/* ── PRODUCT IMAGE ── */
 .prod-img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 2px solid #f0e8de; }
 .prod-img-placeholder { width: 44px; height: 44px; border-radius: 8px; background: linear-gradient(135deg, #f5ece0, #e8d8c0); display: flex; align-items: center; justify-content: center; color: #c8a06a; font-size: 1rem; }
 .prod-name { font-weight: 600; }
-.harga { font-weight: 600; color: var(--crimson); }
-.badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 50px; font-size: 0.72rem; font-weight: 600; }
-.badge-aktif { background: #dcfce7; color: #15803d; }
-.badge-nonaktif { background: #fee2e2; color: #b91c1c; }
-.badge-kering { background: #fef3c7; color: #92400e; }
-.badge-basah { background: #dbeafe; color: #1e40af; }
+.harga { font-weight: 700; color: var(--crimson); }
 
-/* ACTION BUTTONS */
+/* ── BADGES ── */
+.badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 50px; font-size: 0.72rem; font-weight: 600; }
+.badge-aktif    { background: #dcfce7; color: #15803d; }
+.badge-nonaktif { background: #fee2e2; color: #b91c1c; }
+.badge-kering   { background: #fef3c7; color: #92400e; }
+.badge-basah    { background: #dbeafe; color: #1e40af; }
+
+/* ── ACTION BUTTONS ── */
+.action-group { display: flex; gap: 6px; align-items: center; }
 .btn-edit { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 8px; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 600; text-decoration: none; transition: background var(--tr); }
 .btn-edit:hover { background: #bfdbfe; }
 .btn-delete { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 8px; background: #fee2e2; color: #b91c1c; font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: background var(--tr); }
 .btn-delete:hover { background: #fecaca; }
-.action-group { display: flex; gap: 6px; }
 
-.empty { text-align: center; padding: 40px; color: var(--text-light); }
-.empty i { font-size: 2rem; opacity: .3; display: block; margin-bottom: 8px; }
+/* ── EMPTY ── */
+.empty-row td { text-align: center; padding: 44px 16px; }
+.empty-row i { font-size: 2rem; opacity: .25; display: block; margin-bottom: 8px; color: var(--text-light); }
+.empty-row p { font-size: 0.82rem; color: var(--text-light); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .topbar-hamburger { display: flex; }
+    .topbar { padding: 0 20px; }
+    .content { padding: 20px; }
+}
+@media (max-width: 600px) {
+    .search-box { width: 100%; }
+    .toolbar-left { flex-direction: column; align-items: stretch; }
+    .page-header { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
 
-<aside class="sidebar">
+{{-- OVERLAY --}}
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+{{-- ━━━ SIDEBAR ━━━ --}}
+<aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
         <div>
             <div class="sidebar-logo-name">PawonLokal</div>
             <div class="sidebar-logo-sub">Admin Panel</div>
         </div>
     </div>
+
     <div class="nav-section">Menu Utama</div>
     <nav>
         <a href="{{ url('/admin/dashboard') }}"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
         <a href="{{ url('/admin/produk') }}" class="active"><i class="fa-solid fa-box"></i> Produk</a>
-        <a href="{{ url('/admin/pesanan') }}"><i class="fa-solid fa-clipboard-list"></i> Pesanan</a>
+        <a href="{{ url('/admin/pesanan') }}">
+            <i class="fa-solid fa-clipboard-list"></i> Pesanan
+            @if(isset($pesananMenunggu) && $pesananMenunggu > 0)
+                <span class="nav-badge">{{ $pesananMenunggu }}</span>
+            @endif
+        </a>
         <a href="{{ url('/admin/detail-pesanan') }}"><i class="fa-solid fa-list-check"></i> Detail Pesanan</a>
         <a href="{{ url('/admin/pembayaran') }}"><i class="fa-solid fa-credit-card"></i> Pembayaran</a>
         <a href="{{ url('/admin/pengiriman') }}"><i class="fa-solid fa-truck"></i> Pengiriman</a>
@@ -105,26 +171,43 @@ tbody tr:last-child td { border-bottom: none; }
         <a href="{{ url('/admin/review') }}"><i class="fa-solid fa-star"></i> Review</a>
         <a href="{{ url('/admin/users') }}"><i class="fa-solid fa-users"></i> Users</a>
     </nav>
+
     <div class="sidebar-foot">
-        <a href="{{ url('/') }}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Website</a>
-        <form action="{{ route('logout') }}" method="POST">
+        <a href="{{ url('/') }}" target="_blank" class="sidebar-foot-link">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Website
+        </a>
+        <form action="{{ route('logout') }}" method="POST" class="logout-form">
             @csrf
-            <button type="submit" style="width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:500;font-family:inherit;">
-                <i class="fa-solid fa-right-from-bracket" style="width:18px;text-align:center"></i> Logout
+            <button type="submit" class="sidebar-foot-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
             </button>
         </form>
     </div>
 </aside>
 
+{{-- ━━━ MAIN ━━━ --}}
 <div class="main">
+
+    {{-- TOPBAR --}}
     <div class="topbar">
-        <div>
-            <div class="topbar-title">Produk</div>
-            <div class="topbar-breadcrumb">Admin <i class="fa-solid fa-chevron-right" style="font-size:.55rem"></i> <span>Produk</span></div>
+        <div class="topbar-left">
+            <button class="topbar-hamburger" id="hamburgerBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div>
+                <div class="topbar-title">Produk</div>
+                <div class="topbar-breadcrumb">
+                    Admin <i class="fa-solid fa-chevron-right" style="font-size:.55rem"></i>
+                    <span>Produk</span>
+                </div>
+            </div>
         </div>
     </div>
 
+    {{-- CONTENT --}}
     <div class="content">
+
+        {{-- PAGE HEADER --}}
         <div class="page-header">
             <div>
                 <h1>Daftar Produk</h1>
@@ -135,12 +218,35 @@ tbody tr:last-child td { border-bottom: none; }
             </a>
         </div>
 
+        {{-- ALERT --}}
         @if(session('success'))
-        <div class="alert-success">
+        <div class="alert-success" id="alertSuccess">
             <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
         </div>
         @endif
 
+        {{-- TOOLBAR --}}
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Cari nama produk...">
+                </div>
+                <select id="filterKategori" class="filter-sel">
+                    <option value="">Semua Kategori</option>
+                    <option value="kering">Kue Kering</option>
+                    <option value="basah">Kue Basah</option>
+                </select>
+                <select id="filterStatus" class="filter-sel">
+                    <option value="">Semua Status</option>
+                    <option value="aktif">Aktif</option>
+                    <option value="nonaktif">Nonaktif</option>
+                </select>
+            </div>
+            <span class="result-count" id="resultCount"></span>
+        </div>
+
+        {{-- TABLE --}}
         <div class="card">
             <div class="table-wrap">
                 <table>
@@ -155,27 +261,33 @@ tbody tr:last-child td { border-bottom: none; }
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tableBody">
                         @forelse($produk as $i => $p)
-                        <tr>
+                        <tr data-name="{{ strtolower($p->nama_produk) }}"
+                            data-kategori="{{ $p->kategori }}"
+                            data-status="{{ $p->status }}">
                             <td>{{ $i + 1 }}</td>
                             <td>
                                 @if($p->foto)
-                                    <img class="prod-img" src="{{ asset('storage/'.$p->foto) }}" alt="{{ $p->nama_produk }}" onerror="this.outerHTML='<div class=prod-img-placeholder><i class=fa-solid fa-cookie></i></div>'">
+                                    <img class="prod-img"
+                                         src="{{ asset('storage/'.$p->foto) }}"
+                                         alt="{{ $p->nama_produk }}"
+                                         onerror="this.outerHTML='<div class=prod-img-placeholder><i class=\'fa-solid fa-cookie\'></i></div>'">
                                 @else
                                     <div class="prod-img-placeholder"><i class="fa-solid fa-cookie"></i></div>
                                 @endif
                             </td>
                             <td><div class="prod-name">{{ $p->nama_produk }}</div></td>
-                            <td><span class="badge badge-{{ $p->kategori }}">{{ $p->kategori }}</span></td>
+                            <td><span class="badge badge-{{ $p->kategori }}">{{ ucfirst($p->kategori) }}</span></td>
                             <td class="harga">Rp {{ number_format($p->harga, 0, ',', '.') }}</td>
-                            <td><span class="badge badge-{{ $p->status }}">{{ $p->status }}</span></td>
+                            <td><span class="badge badge-{{ $p->status }}">{{ ucfirst($p->status) }}</span></td>
                             <td>
                                 <div class="action-group">
                                     <a href="{{ route('admin.produk.edit', $p->id_produk) }}" class="btn-edit">
                                         <i class="fa-solid fa-pen"></i> Edit
                                     </a>
-                                    <form action="{{ route('admin.produk.destroy', $p->id_produk) }}" method="POST" onsubmit="return confirm('Hapus produk ini?')">
+                                    <form action="{{ route('admin.produk.destroy', $p->id_produk) }}" method="POST"
+                                          onsubmit="return confirm('Hapus produk ini?')">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="btn-delete">
                                             <i class="fa-solid fa-trash"></i> Hapus
@@ -185,22 +297,119 @@ tbody tr:last-child td { border-bottom: none; }
                             </td>
                         </tr>
                         @empty
-                        <tr>
+                        <tr class="empty-row">
                             <td colspan="7">
-                                <div class="empty">
-                                    <i class="fa-solid fa-box-open"></i>
-                                    <p>Belum ada produk</p>
-                                </div>
+                                <i class="fa-solid fa-box-open"></i>
+                                <p>Belum ada produk</p>
                             </td>
                         </tr>
                         @endforelse
+
+                        {{-- ditampilkan JS kalau hasil filter kosong --}}
+                        <tr class="empty-row" id="noResult" style="display:none;">
+                            <td colspan="7">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <p>Produk tidak ditemukan</p>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
-</div>
 
-</div>
+    </div>{{-- /content --}}
+</div>{{-- /main --}}
+</div>{{-- /wrapper --}}
+
+<script>
+(function () {
+    'use strict';
+
+    /* ── SIDEBAR TOGGLE ── */
+    const sidebar   = document.getElementById('sidebar');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const overlay   = document.getElementById('sidebarOverlay');
+
+    hamburger && hamburger.addEventListener('click', () => {
+        const open = sidebar.classList.toggle('open');
+        overlay.classList.toggle('show', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    });
+    overlay && overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+    });
+
+    /* ── TOPBAR SCROLL SHADOW ── */
+    const topbar = document.querySelector('.topbar');
+    window.addEventListener('scroll', () => {
+        topbar.style.boxShadow = window.scrollY > 4
+            ? '0 2px 20px rgba(139,26,26,0.10)'
+            : 'none';
+    }, { passive: true });
+
+    /* ── SEARCH & FILTER ── */
+    const searchInput    = document.getElementById('searchInput');
+    const filterKategori = document.getElementById('filterKategori');
+    const filterStatus   = document.getElementById('filterStatus');
+    const resultCount    = document.getElementById('resultCount');
+    const noResult       = document.getElementById('noResult');
+    const tbody          = document.getElementById('tableBody');
+
+    function getDataRows() {
+        return tbody ? Array.from(tbody.querySelectorAll('tr[data-name]')) : [];
+    }
+
+    function runFilter() {
+        const q   = (searchInput.value || '').toLowerCase().trim();
+        const kat = filterKategori.value.toLowerCase();
+        const sta = filterStatus.value.toLowerCase();
+        const rows = getDataRows();
+        let vis = 0;
+
+        rows.forEach(row => {
+            const match =
+                (!q   || row.dataset.name.includes(q)) &&
+                (!kat || row.dataset.kategori === kat)  &&
+                (!sta || row.dataset.status   === sta);
+
+            row.classList.toggle('row-hidden', !match);
+            if (match) vis++;
+        });
+
+        if (resultCount) {
+            resultCount.innerHTML = rows.length
+                ? `Menampilkan <strong>${vis}</strong> dari <strong>${rows.length}</strong> produk`
+                : '';
+        }
+        if (noResult) noResult.style.display = (rows.length && vis === 0) ? '' : 'none';
+    }
+
+    let debounceTimer;
+    searchInput    && searchInput.addEventListener('input',  () => { clearTimeout(debounceTimer); debounceTimer = setTimeout(runFilter, 180); });
+    filterKategori && filterKategori.addEventListener('change', runFilter);
+    filterStatus   && filterStatus.addEventListener('change',   runFilter);
+
+    runFilter(); // init count
+
+    /* ── AUTO DISMISS ALERT ── */
+    const alert = document.getElementById('alertSuccess');
+    if (alert) {
+        setTimeout(() => {
+            alert.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            alert.style.opacity = '0';
+            alert.style.transform = 'translateY(-8px)';
+            setTimeout(() => alert.remove(), 500);
+        }, 3500);
+    }
+
+    /* ── LOGOUT CONFIRM ── */
+    document.querySelectorAll('.logout-form').forEach(f =>
+        f.addEventListener('submit', e => { if (!confirm('Yakin ingin logout?')) e.preventDefault(); })
+    );
+
+})();
+</script>
 </body>
 </html>
