@@ -139,7 +139,7 @@
                 <div class="proses-card reveal reveal-delay-2">
                     <div class="proses-video-container">
                         <video class="proses-video" autoplay muted loop playsinline>
-                            <source src="{{ asset('videos/11.mp4') }}" type="video/mp4">
+                            <source src="{{ asset('videos/14.mp4') }}" type="video/mp4">
                         </video>
                     </div>
                     <div class="proses-card-body">
