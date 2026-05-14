@@ -7,9 +7,20 @@ use App\Models\Produk;
 
 class ProdukController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $produk = Produk::where('status', 'aktif')->get();
+        $query = Produk::where('status', 'aktif');
+
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->kategori);
+        }
+
+        if ($request->filled('search')) {
+            $query->where('nama_produk', 'like', '%' . $request->search . '%');
+        }
+
+        $produk = $query->get();
+
         return view('produk', compact('produk'));
     }
 
