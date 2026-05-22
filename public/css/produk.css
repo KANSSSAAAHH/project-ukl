@@ -256,3 +256,49 @@ footer { background: var(--brown); color: rgba(255,255,255,0.85); padding: 60px 
     .produk-card-img { height: 160px; }
     .footer-grid { grid-template-columns: 1fr; gap: 24px; }
 }
+
+/* FLOATING CART */
+.floating-cart {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-soft));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(139,26,26,0.4);
+    z-index: 999;
+    animation: floatBounce 2s ease-in-out infinite;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.floating-cart:hover {
+    transform: scale(1.15);
+    box-shadow: 0 12px 40px rgba(139,26,26,0.5);
+    animation: none;
+}
+.floating-cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--gold);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+@keyframes floatBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}

@@ -409,14 +409,9 @@ tr.row-hidden {
     display: inline-flex; 
     align-items: center; 
     gap: 5px; 
-    background: #fef3c7; 
-    color: #92400e; 
-    border: 1px solid #fde68a; 
     border-radius: 7px; 
     padding: 3px 9px; 
     font-size: 0.75rem; 
-    font-weight: 700; 
-    font-family: monospace; 
 }
 
 .harga { 

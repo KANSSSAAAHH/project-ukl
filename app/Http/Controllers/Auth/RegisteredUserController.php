@@ -26,13 +26,24 @@ class RegisteredUserController extends Controller
             'email'    => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
             'no_hp'    => ['required', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'nama.required'      => 'Nama lengkap wajib diisi.',
+            'nama.max'           => 'Nama maksimal 255 karakter.',
+            'email.required'     => 'Email wajib diisi.',
+            'email.email'        => 'Format email tidak valid.',
+            'email.unique'       => 'Email sudah terdaftar, gunakan email lain.',
+            'no_hp.required'     => 'Nomor HP wajib diisi.',
+            'no_hp.max'          => 'Nomor HP maksimal 20 karakter.',
+            'password.required'  => 'Password wajib diisi.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+            'password.min'       => 'Password minimal 8 karakter.',
         ]);
 
         $user = User::create([
             'nama'     => $request->nama,
             'email'    => $request->email,
             'no_hp'    => $request->no_hp,
-            'password' => Hash::make($request->password), // ← hash manual, JANGAN andalkan cast
+            'password' => Hash::make($request->password),
             'role'     => 'customer',
         ]);
 
@@ -40,6 +51,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/user/home');
+        return redirect('/');
     }
 }

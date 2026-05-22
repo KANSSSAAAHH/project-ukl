@@ -69,7 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;
 <body>
 <nav>
     <a href="{{ url('/user/home') }}" class="nav-logo">
-        <img src="{{ asset('images/Logo.PNG') }}" alt="PawonLokal">
+        <img src="{{ asset('images/LogoPL.PNG') }}" alt="PawonLokal">
         <span>PawonLokal</span>
     </a>
     <ul style="display:flex;align-items:center;gap:8px;list-style:none;">
@@ -88,7 +88,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;
         <i class="fa-solid fa-arrow-left"></i> Kembali ke Riwayat Pesanan
     </a>
 
-    <h1 class="page-title">Detail Pesanan #{{ $pesanan->id_pesanan }}</h1>
+    <h1 class="page-title">Detail Pesanan</h1>
     <p class="page-sub">{{ \Carbon\Carbon::parse($pesanan->tanggal_pesanan)->translatedFormat('d F Y') }}</p>
 
     {{-- STATUS TRACKER --}}
@@ -193,7 +193,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:72px;
         @else
         <div class="info-row">
             <span class="info-label">Bukti Bayar</span>
-            <a href="{{ route('pembayaran.index', $pesanan->id_pesanan) }}" class="btn-upload-lagi">
+            <a href="{{ route('pembayaran.index', encrypt($pesanan->id_pesanan)) }}" class="btn-upload-lagi">
                 <i class="fa-solid fa-cloud-arrow-up"></i> Upload Sekarang
             </a>
         </div>

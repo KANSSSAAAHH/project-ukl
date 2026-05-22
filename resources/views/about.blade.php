@@ -27,9 +27,6 @@
         <li><a href="{{ url('/about') }}" class="active">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}">Produk</a></li>
         @auth
-            @if(auth()->user()->role === 'customer')
-                <li><a href="{{ url('/keranjang') }}"><i class="fa-solid fa-basket-shopping"></i> Keranjang</a></li>
-            @endif
             <li>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
                     @csrf
@@ -52,9 +49,6 @@
     <a href="{{ url('/about') }}" style="color:var(--crimson);font-weight:700;">Tentang Kami</a>
     <a href="{{ url('/produk') }}">Produk</a>
     @auth
-        @if(auth()->user()->role === 'customer')
-            <a href="{{ url('/keranjang') }}">Keranjang</a>
-        @endif
         <a href="#" onclick="event.preventDefault(); document.getElementById('mobile-logout-form').submit();" style="color:var(--crimson);font-weight:700;">Logout →</a>
         <form id="mobile-logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
     @else
@@ -170,7 +164,7 @@
                         </div>
                         <div class="timeline-content">
                             <h4>Toko Fisik Pertama</h4>
-                            <p>Membuka outlet pertama di Surabaya dengan 20+ jenis kue tersedia.</p>
+                            <p>Membuka outlet pertama di Mojokerto dengan 20+ jenis kue tersedia.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -309,21 +303,24 @@
                 <div class="visimisi-card-icon"><i class="fa-solid fa-eye"></i></div>
                 <h3>Visi</h3>
                 <p>
-                    Menjadi merek kue kering dan kue basah nusantara yang terpercaya,
-                    dengan rasa autentik dan kualitas terbaik buatan Bu Nanik.
+                    Menjadi pilihan utama kue tradisional Indonesia yang hangat, otentik,
+                    dan mudah dinikmati di meja keluarga setiap hari.
                 </p>
             </div>
 
             <div class="visimisi-card reveal reveal-delay-1">
                 <div class="visimisi-card-icon"><i class="fa-solid fa-bullseye"></i></div>
                 <h3>Misi</h3>
-                <p>Mendukung dan melestarikan kue tradisional Indonesia agar terus dikenal dan dicintai semua generasi.</p>
+                <p>
+                    Membawa rasa warisan Nusantara ke setiap pesanan dengan kualitas,
+                    kesegaran, dan sentuhan layanan yang tulus.
+                </p>
                 <ul>
-                    <li><i class="fa-solid fa-check"></i> Menggunakan bahan lokal berkualitas tinggi</li>
-                    <li><i class="fa-solid fa-check"></i> Menjaga resep warisan tanpa kompromi</li>
-                    <li><i class="fa-solid fa-check"></i> Memberikan pelayanan terbaik dengan hati</li>
-                    <li><i class="fa-solid fa-check"></i> Memberdayakan pelaku UMKM kuliner lokal</li>
-                    <li><i class="fa-solid fa-check"></i> Mengedukasi masyarakat tentang kekayaan kuliner Nusantara</li>
+                    <li><i class="fa-solid fa-check"></i> Menggunakan bahan lokal terbaik setiap hari</li>
+                    <li><i class="fa-solid fa-check"></i> Memelihara resep tradisional tanpa mengurangi keaslian</li>
+                    <li><i class="fa-solid fa-check"></i> Melayani dengan cepat, rapi, dan ramah</li>
+                    <li><i class="fa-solid fa-check"></i> Mengajak lebih banyak orang mencintai kue Nusantara</li>
+                    <li><i class="fa-solid fa-check"></i> Menjaga dapur bersih, halal, dan penuh rasa tanggung jawab</li>
                 </ul>
             </div>
         </div>
@@ -340,9 +337,6 @@
             </div>
             <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>
             <div class="footer-socials">
-                <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="https://wa.me/6285232411498" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
@@ -373,7 +367,7 @@
         <div class="footer-col">
             <h4>Kontak</h4>
             <ul style="list-style:none;">
-                <li class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Jl. Tradisi No. 7, Surabaya, Jawa Timur</span></li>
+                <li class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Dsn. Kalitengah Ds. Bangun RT.01 RW.01 Kec. Pungging Kab. Mojokerto</span></li>
                 <li class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+62 852-3241-1498</span></li>
                 <li class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>halo@pawonlokal.id</span></li>
                 <li class="footer-contact-item"><i class="fa-solid fa-clock"></i><span>Senin–Sabtu, 07.00–17.00 WIB</span></li>

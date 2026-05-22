@@ -20,7 +20,7 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--cream);
+    background: #FFFFFF;
     color: var(--text-dark);
     overflow-x: hidden;
 }
@@ -314,9 +314,9 @@ section { padding: 100px 40px; }
     font-size: 0.75rem; color: var(--gold-light); margin-top: 2px;
 }
 
-.story-text .section-label { color: var(--gold); }
+.story-text .section-label { color: var(--crimson); }
 .story-text p {
-    color: var(--text-mid); font-size: 0.97rem; line-height: 1.85;
+    color: var(--text-dark); font-size: 0.97rem; line-height: 1.85;
     margin-bottom: 18px;
 }
 
@@ -358,18 +358,18 @@ section { padding: 100px 40px; }
     content: '';
     position: absolute; inset: 0;
     background-image: repeating-linear-gradient(
-        45deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px,
+        45deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px,
         transparent 1px, transparent 50px
     );
     pointer-events: none;
 }
 
 .nilai-header { text-align: center; margin-bottom: 60px; }
-.nilai-header .section-label { color: var(--gold-light); justify-content: center; }
+.nilai-header .section-label { color: rgba(255,255,255,0.9); justify-content: center; }
 .nilai-header .section-title { color: var(--white); text-align: center; }
 .nilai-header .ornament { justify-content: center; }
-.nilai-header .ornament-line { background: linear-gradient(90deg,transparent,rgba(232,184,109,0.4),transparent); }
-.nilai-header .ornament-dot { background: var(--gold-light); }
+.nilai-header .ornament-line { background: linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent); }
+.nilai-header .ornament-dot { background: rgba(255,255,255,0.85); }
 
 .nilai-grid {
     display: grid;
@@ -407,22 +407,22 @@ section { padding: 100px 40px; }
 
 .nilai-card ul { list-style: none; padding: 0; }
 .nilai-card ul li {
-    font-size: 0.88rem; color: rgba(255,255,255,0.8);
+    font-size: 0.88rem; color: rgba(255,255,255,0.92);
     line-height: 1.7; padding: 5px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     display: flex; align-items: flex-start; gap: 10px;
 }
 .nilai-card ul li:last-child { border-bottom: none; }
 .nilai-card ul li::before {
     content: '✦';
-    color: var(--gold-light); font-size: 0.65rem;
+    color: rgba(255,255,255,0.85); font-size: 0.65rem;
     margin-top: 5px; flex-shrink: 0;
 }
 
 /* ============================================================
    VISI MISI
 ============================================================ */
-.visimisi-section { background: var(--cream); }
+.visimisi-section { background: #FFFFFF; }
 
 .visimisi-header { text-align: center; margin-bottom: 60px; }
 .visimisi-header .section-label { justify-content: center; }
@@ -449,7 +449,7 @@ section { padding: 100px 40px; }
     content: '';
     position: absolute; bottom: -40px; right: -40px;
     width: 120px; height: 120px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(139,26,26,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(139,26,26,0.08) 0%, transparent 70%);
 }
 
 .visimisi-card-icon {
@@ -459,7 +459,7 @@ section { padding: 100px 40px; }
     display: flex; align-items: center; justify-content: center;
     color: var(--white); font-size: 1.5rem;
     margin-bottom: 24px;
-    box-shadow: 0 8px 24px rgba(139,26,26,0.3);
+    box-shadow: 0 8px 24px rgba(139,26,26,0.25);
 }
 
 .visimisi-card h3 {
@@ -468,14 +468,14 @@ section { padding: 100px 40px; }
     color: var(--crimson); margin-bottom: 16px;
 }
 
-.visimisi-card p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; }
+.visimisi-card p { color: var(--text-dark); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; }
 
 .visimisi-card ul { list-style: none; padding: 0; }
 .visimisi-card ul li {
     display: flex; align-items: flex-start; gap: 12px;
-    font-size: 0.88rem; color: var(--text-mid);
+    font-size: 0.88rem; color: var(--text-dark);
     padding: 8px 0;
-    border-bottom: 1px solid rgba(201,146,58,0.12);
+    border-bottom: 1px solid rgba(139,26,26,0.12);
 }
 .visimisi-card ul li:last-child { border-bottom: none; }
 .visimisi-card ul li i { color: var(--crimson); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem; }

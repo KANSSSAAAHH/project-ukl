@@ -6,6 +6,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PembayaranUserController;
 use App\Http\Controllers\RiwayatPesananController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\Admin\AdminKeranjangController;
@@ -40,11 +41,8 @@ Route::middleware('auth')->group(function () {
     // Dashboard (fallback)
     Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
 
-    // Halaman utama user setelah login
-    Route::get('/user/home', function () {
-        $produk = \App\Models\Produk::where('status', 'aktif')->get();
-        return view('user.home', compact('produk'));
-    })->name('user.home');
+    // Redirect user/home ke home
+    Route::get('/user/home', fn() => redirect('/'))->name('user.home');
 
     // Profile
     Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
@@ -71,6 +69,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/pesanan/riwayat',      [RiwayatPesananController::class, 'index'])->name('pesanan.riwayat');
     Route::get('/pesanan/riwayat/{id}', [RiwayatPesananController::class, 'detail'])->name('pesanan.detail');
 
+    // Rating
+// Rating
+Route::get('/rating',  [RatingController::class, 'index'])->name('rating');
+Route::post('/rating', [RatingController::class, 'store'])->name('rating.store');
 });
 
 // ===================================================

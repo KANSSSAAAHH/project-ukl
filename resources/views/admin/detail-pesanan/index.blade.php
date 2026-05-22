@@ -122,7 +122,7 @@
                             data-pesanan="{{ $d->id_pesanan }}"
                             data-subtotal="{{ $d->subtotal }}">
                             <td>{{ $i + 1 }}</td>
-                            <td><span class="id-badge"><i class="fa-solid fa-hashtag" style="font-size:.65rem"></i>{{ $d->id_pesanan }}</span></td>
+                            <td><span class="id-badge">{{ $d->id_pesanan }}</span></td>
                             <td>{{ $d->produk->nama_produk ?? '-' }}</td>
                             <td>{{ $d->jumlah_produk }}</td>
                             <td class="harga">Rp {{ number_format($d->harga, 0, ',', '.') }}</td>

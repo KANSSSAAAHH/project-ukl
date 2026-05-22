@@ -361,9 +361,6 @@
                 </div>
                 <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>
                 <div class="footer-socials">
-                    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
                     <a href="https://wa.me/6285232411498" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
@@ -394,7 +391,7 @@
             <div class="footer-col">
                 <h4>Kontak</h4>
                 <ul style="list-style:none;">
-                    <li class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Jl. Tradisi No. 7, Surabaya, Jawa Timur</span></li>
+                    <li class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Dsn. Kalitengah Ds. Bangun RT.01 RW.01 Kec. Pungging Kab. Mojokerto</span></li>
                     <li class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+62 852-3241-1498</span></li>
                     <li class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>halo@pawonlokal.id</span></li>
                     <li class="footer-contact-item"><i class="fa-solid fa-clock"></i><span>Senin–Sabtu, 07.00–17.00 WIB</span></li>

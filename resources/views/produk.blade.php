@@ -25,17 +25,6 @@
         <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}" class="active">Produk</a></li>
         @auth
-            @if(auth()->user()->role === 'customer')
-                <li>
-                    <a href="{{ url('/keranjang') }}" class="cart-btn">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        @php $jumlahKeranjang = \App\Models\Keranjang::where('id_user', auth()->id())->count(); @endphp
-                        @if($jumlahKeranjang > 0)
-                            <span class="cart-badge">{{ $jumlahKeranjang }}</span>
-                        @endif
-                    </a>
-                </li>
-            @endif
             <li>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
                     @csrf
@@ -160,6 +149,19 @@
     </div>
 </div>
 
+{{-- FLOATING CART --}}
+@auth
+    @if(auth()->user()->role === 'customer')
+    <a href="{{ url('/keranjang') }}" class="floating-cart" id="floatingCart">
+        <i class="fa-solid fa-basket-shopping"></i>
+        @php $jumlahKeranjang = \App\Models\Keranjang::where('id_user', auth()->id())->count(); @endphp
+        @if($jumlahKeranjang > 0)
+            <span class="floating-cart-badge">{{ $jumlahKeranjang }}</span>
+        @endif
+    </a>
+    @endif
+@endauth
+
 {{-- FOOTER - WHITE TEXT --}}
 <footer>
     <div class="footer-grid">
@@ -170,9 +172,6 @@
             </div>
             <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>
             <div class="footer-socials">
-                <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="https://wa.me/6285232411498" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
@@ -202,7 +201,7 @@
         </div>
         <div class="footer-col">
             <h4>Kontak</h4>
-            <div class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Jl. Tradisi No. 7, Surabaya</span></div>
+            <div class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Dsn. Kalitengah Ds. Bangun RT.01 RW.01 Kec. Pungging Kab. Mojokerto</span></div>
             <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+62 852-3241-1498</span></div>
             <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>halo@pawonlokal.id</span></div>
         </div>
