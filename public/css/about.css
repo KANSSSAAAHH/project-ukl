@@ -26,7 +26,7 @@ body {
 }
 
 /* ============================================================
-   NAVBAR - WHITE BACKGROUND
+   NAVBAR
 ============================================================ */
 nav {
     position: fixed;
@@ -116,7 +116,7 @@ nav.scrolled {
 .mobile-menu a:hover { color: var(--crimson); }
 
 /* ============================================================
-   HERO ABOUT - RED BACKGROUND
+   HERO ABOUT — BACKGROUND PUTIH
 ============================================================ */
 .about-hero {
     min-height: 520px;
@@ -125,23 +125,25 @@ nav.scrolled {
     overflow: hidden;
     display: flex;
     align-items: flex-end;
-    background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 100%);
+    background: #FFFFFF;
 }
 .about-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(
-        45deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px,
-        transparent 1px, transparent 60px
-    );
+    background-image:
+        radial-gradient(circle at 80% 50%, rgba(139,26,26,0.05) 0%, transparent 60%),
+        repeating-linear-gradient(
+            45deg, rgba(139,26,26,0.015) 0, rgba(139,26,26,0.015) 1px,
+            transparent 1px, transparent 60px
+        );
     pointer-events: none;
 }
 
 .hero-blob-red {
     position: absolute;
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(139,26,26,0.07) 0%, transparent 70%);
     top: -100px; right: -80px;
     border-radius: 50%;
     filter: blur(60px);
@@ -168,42 +170,60 @@ nav.scrolled {
 
 .about-hero-text { padding-bottom: 70px; }
 
+/* Breadcrumb — gelap di bg putih */
 .hero-breadcrumb {
     display: flex; align-items: center; gap: 8px;
     font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(255,255,255,0.7);
+    text-transform: uppercase; color: var(--text-light);
     margin-bottom: 20px;
 }
-.hero-breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
-.hero-breadcrumb a:hover { color: var(--white); }
-.hero-breadcrumb span { color: var(--gold-light); }
+.hero-breadcrumb a { color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+.hero-breadcrumb a:hover { color: var(--crimson); }
+.hero-breadcrumb span { color: var(--crimson); }
 
+/* Badge — merah di bg putih */
 .about-hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-    color: var(--white); font-size: 0.78rem; font-weight: 600;
+    background: rgba(139,26,26,0.07);
+    border: 1px solid rgba(139,26,26,0.25);
+    color: var(--crimson);
+    font-size: 0.78rem; font-weight: 600;
     letter-spacing: 0.08em; text-transform: uppercase;
     padding: 6px 14px; border-radius: 50px; margin-bottom: 22px;
-    backdrop-filter: blur(8px);
 }
 
+/* Judul — hitam + merah italic */
 .about-hero-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.2rem, 5vw, 3.6rem);
     font-weight: 800; line-height: 1.15;
-    color: var(--white); margin-bottom: 20px;
+    color: var(--text-dark); margin-bottom: 20px;
 }
-.about-hero-title em { font-style: italic; color: var(--gold-light); }
+.about-hero-title em { font-style: italic; color: var(--crimson); }
 
+/* Deskripsi — abu gelap */
 .about-hero-desc {
-    color: rgba(255,255,255,0.9);
+    color: var(--text-mid);
     font-size: 1.05rem; line-height: 1.8;
     max-width: 500px;
 }
 
+/* ── Foto Bu Nanik + dekorasi garis ─────────────────────────── */
 .about-hero-photo {
     position: relative;
     align-self: flex-end;
+}
+
+/* Dekorasi garis dihapus */
+
+.photo-frame {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    background: var(--white);
+    border-radius: 24px 24px 0 0;
+    padding: 12px 12px 0;
+    box-shadow: 0 20px 60px rgba(139,26,26,0.20);
 }
 
 .photo-frame img {
@@ -211,19 +231,9 @@ nav.scrolled {
     height: 440px;
     object-fit: cover;
     object-position: top center;
-    border-radius: 24px 24px 0 0;
+    border-radius: 16px 16px 0 0;
     display: block;
     background: #f5f0e8;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-
-.photo-frame {
-    position: relative;
-    display: inline-block;
-    background: var(--white);
-    border-radius: 24px 24px 0 0;
-    padding: 12px 12px 0;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
 
 .photo-name-badge {
@@ -234,6 +244,7 @@ nav.scrolled {
     padding: 14px 20px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     min-width: 180px;
+    z-index: 2;
 }
 .photo-name-badge .badge-name {
     font-family: 'Playfair Display', serif;
@@ -246,7 +257,7 @@ nav.scrolled {
 }
 
 /* ============================================================
-   SECTION — utilitas bersama
+   SECTION UTILITIES
 ============================================================ */
 section { padding: 100px 40px; }
 .max-w { max-width: 1200px; margin: 0 auto; }
@@ -345,6 +356,51 @@ section { padding: 100px 40px; }
 }
 .timeline-content p {
     font-size: 0.85rem; color: var(--text-light); line-height: 1.6; margin: 0;
+}
+
+/* ============================================================
+   STATS BAR — BACKGROUND MERAH
+============================================================ */
+.stats-bar {
+    background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 60%, #A02020 100%);
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.stats-bar::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px,
+        transparent 1px, transparent 50px
+    );
+    pointer-events: none;
+}
+
+.stats-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 20px; text-align: center;
+    position: relative; z-index: 1;
+}
+
+.stat-box {
+    padding: 28px 20px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+.stat-box:last-child { border-right: none; }
+
+.stat-box-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 800;
+    color: var(--gold-light);
+    line-height: 1; margin-bottom: 8px;
+}
+
+.stat-box-label {
+    font-size: 0.82rem; font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase; letter-spacing: 0.08em;
 }
 
 /* ============================================================
@@ -481,37 +537,7 @@ section { padding: 100px 40px; }
 .visimisi-card ul li i { color: var(--crimson); margin-top: 3px; flex-shrink: 0; font-size: 0.75rem; }
 
 /* ============================================================
-   STATS BAR
-============================================================ */
-.stats-bar { 
-    background: var(--white); 
-    padding: 60px 40px;
-    border-top: 1px solid rgba(139,26,26,0.08);
-    border-bottom: 1px solid rgba(139,26,26,0.08);
-}
-
-.stats-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 20px; text-align: center;
-}
-
-.stat-box { padding: 28px 20px; border-right: 1px solid rgba(139,26,26,0.1); }
-.stat-box:last-child { border-right: none; }
-
-.stat-box-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem; font-weight: 800;
-    color: var(--crimson); line-height: 1; margin-bottom: 8px;
-}
-
-.stat-box-label {
-    font-size: 0.82rem; font-weight: 600;
-    color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em;
-}
-
-/* ============================================================
-   FOOTER - WHITE TEXT
+   FOOTER
 ============================================================ */
 footer { background: var(--brown); color: rgba(255,255,255,0.85); padding: 60px 40px 32px; }
 .footer-grid {
@@ -576,7 +602,13 @@ footer { background: var(--brown); color: rgba(255,255,255,0.85); padding: 60px 
 ============================================================ */
 @media (max-width: 992px) {
     .about-hero-inner { grid-template-columns: 1fr; }
-    .about-hero-photo { display: flex; justify-content: center; padding-bottom: 0; }
+    .about-hero-photo {
+        display: flex; justify-content: center;
+        padding-bottom: 0;
+    }
+    /* Sembunyikan garis dekorasi di tablet agar tidak overflow */
+    .about-hero-photo::before,
+    .about-hero-photo::after { display: none; }
     .photo-frame img { width: 280px; height: 340px; }
     .story-grid { grid-template-columns: 1fr; gap: 40px; }
     .nilai-grid { grid-template-columns: 1fr; }
@@ -591,8 +623,10 @@ footer { background: var(--brown); color: rgba(255,255,255,0.85); padding: 60px 
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .about-hero-inner { padding: 60px 24px 0; }
+    .about-hero-photo::before,
+    .about-hero-photo::after { display: none; }
     .stats-inner { grid-template-columns: 1fr 1fr; }
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-    .stat-box { border-right: none; border-bottom: 1px solid rgba(139,26,26,0.1); }
+    .stat-box { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
     .stat-box:last-child { border-bottom: none; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 }

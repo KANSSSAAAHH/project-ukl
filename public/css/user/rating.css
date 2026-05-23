@@ -1,0 +1,391 @@
+/* ========================================
+   PawonLokal - Rating Page
+   File: rating.css
+   ======================================== */
+
+/* ===== CSS Variables & Reset ===== */
+:root {
+    --crimson: #8B1A1A;
+    --crimson-soft: #B22222;
+    --gold: #C9923A;
+    --gold-light: #E8B86D;
+    --cream: #FDF6ED;
+    --cream-dark: #F5E6CC;
+    --brown: #3D1C00;
+    --text-dark: #1E0A00;
+    --text-mid: #5C3317;
+    --text-light: #9E7650;
+    --white: #FFFFFF;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(135deg, #fdf8ee 0%, #f9f0d8 50%, #f9f3e2 100%);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ===== Main Card ===== */
+.rating-card {
+    background: var(--white);
+    border-radius: 32px;
+    padding: 56px 48px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 24px 64px rgba(139, 26, 26, 0.12);
+    animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Card Header ===== */
+.card-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.card-icon {
+    width: 76px;
+    height: 76px;
+    background: linear-gradient(135deg, #fff5e0, #fde8b0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    font-size: 2rem;
+    color: var(--gold);
+    box-shadow: 0 8px 20px rgba(201, 146, 58, 0.15);
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.95rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ===== Form Groups ===== */
+.form-group {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.form-group.left-align {
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.form-error {
+    font-size: 0.75rem;
+    color: var(--crimson);
+    margin-top: 6px;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* ===== Star Rating ===== */
+.star-rating {
+    display: inline-flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.star-rating input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.star-rating label {
+    font-size: 2.6rem;
+    color: #e2d4c0;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.15s;
+    line-height: 1;
+    user-select: none;
+}
+
+.star-rating label:hover {
+    transform: scale(1.25);
+}
+
+.star-rating label.active {
+    color: var(--gold);
+}
+
+.star-rating label.selected {
+    color: var(--gold);
+}
+
+.star-hint {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 600;
+    min-height: 20px;
+    transition: color 0.2s;
+}
+
+/* ===== Textarea ===== */
+.form-textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1.5px solid #e8d8c4;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: var(--cream);
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.form-textarea:focus {
+    border-color: var(--crimson);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(139, 26, 26, 0.06);
+}
+
+.form-textarea::placeholder {
+    color: #b0956e;
+    opacity: 0.7;
+}
+
+/* ===== Submit Button ===== */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-soft));
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(139, 26, 26, 0.3);
+    transition: transform var(--transition), box-shadow var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(139, 26, 26, 0.45);
+}
+
+.btn-submit:active {
+    transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-submit.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-submit.loading::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    position: absolute;
+}
+
+.btn-submit.loading span {
+    opacity: 0;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Alerts ===== */
+.alert {
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideDown 0.3s ease;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Thank You Overlay ===== */
+.thankyou-overlay {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+    animation: fadeIn 0.4s ease;
+}
+
+.thankyou-overlay.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.thankyou-icon {
+    width: 96px;
+    height: 96px;
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    color: #15803d;
+    margin: 0 auto 26px;
+    box-shadow: 0 8px 24px rgba(21, 128, 61, 0.15);
+}
+
+.thankyou-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.thankyou-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+
+.btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-soft));
+    color: var(--white);
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(139, 26, 26, 0.3);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-home:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(139, 26, 26, 0.45);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 540px) {
+    .rating-card {
+        padding: 40px 24px;
+    }
+    
+    .card-title {
+        font-size: 1.65rem;
+    }
+    
+    .star-rating label {
+        font-size: 2.2rem;
+    }
+    
+    .thankyou-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .btn-submit,
+    .btn-home {
+        display: none;
+    }
+    
+    .rating-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+}
