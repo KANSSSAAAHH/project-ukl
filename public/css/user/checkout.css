@@ -15,7 +15,9 @@
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,11 +28,12 @@ body {
     background: linear-gradient(135deg, #fdf8ee, #f9f0d8, #f9f3e2);
     color: var(--text-dark);
     min-height: 100vh;
-    line-height: 1.5;
 }
 
-/* ===== Navigation ===== */
-.navbar {
+/* =====================
+   NAVBAR
+===================== */
+nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -74,36 +77,11 @@ body {
     border: none;
     cursor: pointer;
     font-family: inherit;
-    transition: var(--transition);
 }
 
-.nav-cta:hover {
-    background: var(--crimson-soft);
-    transform: translateY(-1px);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-mid);
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 50px;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    background: var(--cream);
-    color: var(--crimson);
-}
-
-/* ===== Page Layout ===== */
+/* =====================
+   PAGE LAYOUT
+===================== */
 .page {
     padding: 100px 40px 60px;
     max-width: 1000px;
@@ -118,7 +96,7 @@ body {
     margin-bottom: 8px;
 }
 
-.page-subtitle {
+.page-sub {
     color: var(--text-light);
     font-size: 0.92rem;
     margin-bottom: 32px;
@@ -131,13 +109,45 @@ body {
     align-items: start;
 }
 
-/* ===== Form Cards ===== */
+.form-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =====================
+   NAVBAR LINKS
+===================== */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: color var(--transition), background var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--crimson);
+    background: rgba(139, 26, 26, 0.08);
+}
+
+/* =====================
+   FORM CARD
+===================== */
 .form-card {
     background: var(--white);
     border-radius: var(--radius);
     padding: 28px;
     box-shadow: var(--shadow-warm);
-    margin-bottom: 20px;
 }
 
 .form-section-title {
@@ -148,11 +158,10 @@ body {
     margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(201, 146, 58, 0.2);
-    display: flex;
-    align-items: center;
 }
 
-.form-section-title i {
+.form-section-title i,
+.summary-title i {
     color: var(--crimson);
     margin-right: 8px;
 }
@@ -171,8 +180,7 @@ body {
     text-transform: uppercase;
 }
 
-.form-input,
-.form-textarea {
+.form-input {
     width: 100%;
     padding: 12px 16px;
     border: 1.5px solid rgba(201, 146, 58, 0.3);
@@ -185,20 +193,9 @@ body {
     outline: none;
 }
 
-.form-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-.form-input:focus,
-.form-textarea:focus {
+.form-input:focus {
     border-color: var(--crimson);
     box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.08);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-    color: var(--text-light);
 }
 
 .form-row {
@@ -207,29 +204,30 @@ body {
     gap: 16px;
 }
 
-/* ===== Payment Methods ===== */
-.payment-grid {
+/* =====================
+   METODE PEMBAYARAN
+===================== */
+.metode-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
-.payment-option {
+.metode-item {
     position: relative;
 }
 
-.payment-option input {
+.metode-item input {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.payment-label {
+.metode-label {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: 10px;
     padding: 12px 16px;
     border: 1.5px solid rgba(201, 146, 58, 0.3);
     border-radius: 10px;
@@ -239,24 +237,21 @@ body {
     color: var(--text-mid);
     transition: all var(--transition);
     background: var(--cream);
-    text-align: center;
 }
 
-.payment-label i {
-    font-size: 1.1rem;
-}
-
-.payment-option input:checked + .payment-label {
+.metode-item input:checked + .metode-label {
     border-color: var(--crimson);
     background: rgba(139, 26, 26, 0.06);
     color: var(--crimson);
 }
 
-.payment-option input:focus + .payment-label {
-    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.1);
+.metode-label i {
+    font-size: 1.1rem;
 }
 
-/* ===== Order Summary ===== */
+/* =====================
+   RINGKASAN PESANAN
+===================== */
 .summary-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -274,13 +269,6 @@ body {
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(201, 146, 58, 0.2);
-    display: flex;
-    align-items: center;
-}
-
-.summary-title i {
-    color: var(--crimson);
-    margin-right: 8px;
 }
 
 .summary-item {
@@ -295,33 +283,29 @@ body {
 .summary-item-name {
     color: var(--text-mid);
     flex: 1;
-    padding-right: 8px;
 }
 
 .summary-item-qty {
     color: var(--text-light);
     font-size: 0.8rem;
-    margin: 0 4px;
+    margin: 0 8px;
 }
 
 .summary-item-price {
     font-weight: 600;
     color: var(--text-dark);
-    white-space: nowrap;
 }
 
-.summary-total {
+.summary-total-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 0 0;
-    margin-top: 8px;
 }
 
 .summary-total-label {
     font-weight: 700;
     color: var(--text-dark);
-    font-size: 1rem;
 }
 
 .summary-total-price {
@@ -331,7 +315,9 @@ body {
     color: var(--crimson);
 }
 
-/* ===== Buttons ===== */
+/* =====================
+   TOMBOL
+===================== */
 .btn-checkout {
     width: 100%;
     display: flex;
@@ -349,25 +335,14 @@ body {
     cursor: pointer;
     box-shadow: 0 6px 24px rgba(139, 26, 26, 0.3);
     margin-top: 16px;
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition: transform var(--transition);
 }
 
 .btn-checkout:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(139, 26, 26, 0.4);
 }
 
-.btn-checkout:active {
-    transform: translateY(0);
-}
-
-.btn-checkout:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.btn-back {
+.btn-kembali {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -383,15 +358,16 @@ body {
     text-decoration: none;
     margin-top: 10px;
     transition: background var(--transition), color var(--transition);
-    width: 100%;
 }
 
-.btn-back:hover {
+.btn-kembali:hover {
     background: var(--crimson);
     color: var(--white);
 }
 
-/* ===== Alerts ===== */
+/* =====================
+   ALERT
+===================== */
 .alert {
     padding: 12px 18px;
     border-radius: 10px;
@@ -401,7 +377,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    animation: slideDown 0.3s ease;
 }
 
 .alert-error {
@@ -410,107 +385,23 @@ body {
     border: 1px solid #fecaca;
 }
 
-.alert-success {
-    background: #dcfce7;
-    color: #166534;
-    border: 1px solid #bbf7d0;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== Loading State ===== */
-.btn-checkout.loading {
-    position: relative;
-    pointer-events: none;
-}
-
-.btn-checkout.loading::after {
-    content: "";
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: var(--white);
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-}
-
-.btn-checkout.loading span {
-    opacity: 0;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* ===== Responsive ===== */
+/* =====================
+   RESPONSIVE
+===================== */
 @media (max-width: 768px) {
-    .navbar {
+    nav {
         padding: 0 20px;
     }
-    
+
     .page {
         padding: 90px 20px 40px;
     }
-    
+
     .checkout-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .payment-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .summary-card {
-        position: static;
-    }
-    
-    .page-title {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-logo span {
-        display: none;
-    }
-    
-    .form-card,
-    .summary-card {
-        padding: 20px;
-    }
-    
-    .summary-total-price {
-        font-size: 1.2rem;
-    }
-}
-
-/* ===== Print Styles ===== */
-@media print {
-    .navbar,
-    .btn-checkout,
-    .btn-back {
-        display: none;
-    }
-    
-    .page {
-        padding: 20px;
-        max-width: none;
-    }
-    
-    .checkout-grid {
         grid-template-columns: 1fr;
     }
 }

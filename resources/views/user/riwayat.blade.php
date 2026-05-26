@@ -9,71 +9,138 @@
     <link rel="stylesheet" href="{{ asset('css/user/riwayat.css') }}">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="{{ url('/user/home') }}" class="nav-logo"><img src="{{ asset('images/LogoPL2.PNG') }}" alt="PawonLokal"><span>PawonLokal</span></a>
-        <ul class="nav-links">
-            <li><a href="{{ url('/user/home') }}">Home</a></li>
-            <li><a href="{{ url('/produk') }}">Produk</a></li>
-            <li><a href="{{ url('/keranjang') }}">Keranjang</a></li>
-            <li><a href="{{ route('pesanan.riwayat') }}" class="active">Pesanan Saya</a></li>
-            <li><form action="{{ route('logout') }}" method="POST" style="display:inline">@csrf<button type="submit" class="nav-cta">Logout</button></form></li>
-        </ul>
-    </nav>
 
-    <main class="page">
-        <h1 class="page-title">Pesanan Saya</h1>
-        <p class="page-subtitle">Riwayat semua pesananmu di PawonLokal</p>
+<nav>
+    <a href="{{ url('/user/home') }}" class="nav-logo">
+        <img src="{{ asset('images/LogoPL2.PNG') }}" alt="PawonLokal">
+        <span>PawonLokal</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="{{ url('/user/home') }}">Home</a></li>
+        <li><a href="{{ url('/produk') }}">Produk</a></li>
+        <li><a href="{{ url('/keranjang') }}">Keranjang</a></li>
+        <li><a href="{{ route('pesanan.riwayat') }}" class="active">Pesanan Saya</a></li>
+        <li>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline">
+                @csrf
+                <button type="submit" class="nav-cta">Logout</button>
+            </form>
+        </li>
+    </ul>
+</nav>
 
-        @if($pesanan->isEmpty())
-            <div class="empty-state">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <h3>Belum ada pesanan</h3>
-                <p>Yuk, mulai belanja kue tradisional favoritmu!</p>
-                <a href="{{ url('/produk') }}" class="btn-shop"><i class="fa-solid fa-store"></i> Mulai Belanja</a>
-            </div>
-        @else
-            <div class="order-list">
-                @foreach($pesanan as $p)
-                <article class="order-card">
-                    <header class="order-header">
-                        <div><div class="order-id">Pesanan <span>#{{ $p->id_pesanan }}</span></div><div class="order-date">{{ \Carbon\Carbon::parse($p->tanggal_pesanan)->translatedFormat('d F Y') }}</div></div>
-                        <div class="order-status-group">
-                            <span class="status-badge {{ $p->status_pesanan }}">
-                                @if($p->status_pesanan === 'menunggu')<i class="fa-solid fa-clock"></i>@elseif($p->status_pesanan === 'diproses')<i class="fa-solid fa-box"></i>@else<i class="fa-solid fa-circle-check"></i>@endif {{ ucfirst($p->status_pesanan) }}
-                            </span>
-                            @if($p->pembayaran)<span class="status-badge payment-{{ $p->pembayaran->status }}"><i class="fa-solid fa-wallet"></i> {{ ucfirst($p->pembayaran->status) }}</span>@endif
+<div class="page">
+    <h1 class="page-title">Pesanan Saya</h1>
+    <p class="page-sub">Riwayat semua pesananmu di PawonLokal</p>
+
+    @if($pesanan->isEmpty())
+        <div class="empty-state">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <h3>Belum ada pesanan</h3>
+            <p>Yuk, mulai belanja kue tradisional favoritmu!</p>
+            <a href="{{ url('/produk') }}" class="btn-belanja">
+                <i class="fa-solid fa-store"></i> Mulai Belanja
+            </a>
+        </div>
+    @else
+        <div class="pesanan-list">
+            @foreach($pesanan as $p)
+            <div class="pesanan-card">
+
+                <div class="pesanan-header">
+                    <div>
+                        <div class="pesanan-id">Pesanan</div>
+                        <div class="pesanan-tgl">
+                            {{ \Carbon\Carbon::parse($p->tanggal_pesanan)->translatedFormat('d F Y') }}
                         </div>
-                    </header>
-                    <div class="order-body">
-                        @foreach($p->detailPesanan as $item)
-                        <div class="product-item">
-                            <div class="product-detail-wrapper">
-                                @if($item->produk->foto)<img class="product-image" src="{{ asset('storage/' . $item->produk->foto) }}" alt="{{ $item->produk->nama_produk }}">@else<div class="product-image-placeholder"><i class="fa-solid fa-cookie"></i></div>@endif
-                                <div class="product-info">
-                                    <div class="product-name text-truncate">{{ $item->produk->nama_produk }}</div>
-                                    <div class="product-qty">{{ $item->jumlah_produk }} pcs × Rp {{ number_format($item->harga, 0, ',', '.') }}</div>
-                                    @if($p->status_pesanan === 'selesai')
-                                        @if(isset($sudahDirating) && in_array($item->id_produk, $sudahDirating))
-                                            <span class="btn-rated"><i class="fa-solid fa-circle-check"></i> Sudah Memberikan Rating</span>
-                                        @else
-                                            <a href="{{ url('/rating?id_produk=' . $item->id_produk) }}" class="btn-rating"><i class="fa-solid fa-star"></i> Beri Rating</a>
-                                        @endif
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="product-subtotal">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</div>
-                        </div>
-                        @endforeach
                     </div>
-                    <footer class="order-footer">
-                        <div><div class="order-total-label">Total Pembayaran</div><div class="order-total">Rp {{ number_format($p->total_harga, 0, ',', '.') }}</div></div>
-                        <div class="footer-actions"><a href="{{ route('pesanan.detail', $p->id_pesanan) }}" class="btn-view"><i class="fa-solid fa-eye"></i> Lihat Detail</a></div>
-                    </footer>
-                </article>
-                @endforeach
+                    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                        {{-- Status Pesanan --}}
+                        <span class="badge badge-{{ $p->status_pesanan }}">
+                            @if($p->status_pesanan === 'menunggu')
+                                <i class="fa-solid fa-clock"></i>
+                            @elseif($p->status_pesanan === 'diproses')
+                                <i class="fa-solid fa-box"></i>
+                            @else
+                                <i class="fa-solid fa-circle-check"></i>
+                            @endif
+                            {{ ucfirst($p->status_pesanan) }}
+                        </span>
+
+                        {{-- Status Pembayaran --}}
+                        @if($p->pembayaran)
+                            <span class="badge badge-{{ $p->pembayaran->status }}">
+                                <i class="fa-solid fa-wallet"></i>
+                                {{ ucfirst($p->pembayaran->status) }}
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="pesanan-body">
+                    @foreach($p->detailPesanan as $item)
+                    <div class="produk-item">
+                        <div class="produk-detail-wrapper">
+
+                            {{-- Foto Produk --}}
+                            @if($item->produk->foto)
+                                <img class="produk-img"
+                                     src="{{ asset('storage/' . $item->produk->foto) }}"
+                                     alt="{{ $item->produk->nama_produk }}"
+                                     onerror="this.outerHTML='<div class=produk-img-placeholder><i class=fa-solid fa-cookie></i></div>'">
+                            @else
+                                <div class="produk-img-placeholder">
+                                    <i class="fa-solid fa-cookie"></i>
+                                </div>
+                            @endif
+
+                            <div class="produk-info">
+                                <div class="produk-nama">{{ $item->produk->nama_produk }}</div>
+                                <div class="produk-qty">
+                                    {{ $item->jumlah_produk }} pcs × Rp {{ number_format($item->harga, 0, ',', '.') }}
+                                </div>
+
+                                {{-- Tombol Rating (hanya untuk pesanan selesai) --}}
+                                @if($p->status_pesanan === 'selesai')
+                                    @if(isset($sudahDirating) && in_array($item->id_produk, $sudahDirating))
+                                        <span class="btn-rating-success">
+                                            <i class="fa-solid fa-circle-check"></i> Sudah Memberikan Rating
+                                        </span>
+                                    @else
+                                        <a href="{{ url('/rating?id_produk=' . $item->id_produk) }}" class="btn-rating">
+                                            <i class="fa-solid fa-star"></i> Beri Rating
+                                        </a>
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="produk-subtotal">
+                            Rp {{ number_format($item->subtotal, 0, ',', '.') }}
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                <div class="pesanan-footer">
+                    <div>
+                        <div class="pesanan-total-label">Total Pembayaran</div>
+                        <div class="pesanan-total">
+                            Rp {{ number_format($p->total_harga, 0, ',', '.') }}
+                        </div>
+                    </div>
+                    <div class="footer-actions">
+                        <a href="{{ route('pesanan.detail', $p->id_pesanan) }}" class="btn-detail">
+                            <i class="fa-solid fa-eye"></i> Lihat Detail
+                        </a>
+                    </div>
+                </div>
+
             </div>
-        @endif
-    </main>
-    <script src="{{ asset('js/user/riwayat.js') }}"></script>
+            @endforeach
+        </div>
+    @endif
+</div>
+
 </body>
 </html>

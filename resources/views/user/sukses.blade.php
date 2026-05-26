@@ -9,14 +9,22 @@
     <link rel="stylesheet" href="{{ asset('css/user/sukses.css') }}">
 </head>
 <body>
-    <main class="success-card">
-        <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-        <h1 class="success-title">Pesanan Berhasil!</h1>
-        <p class="success-subtitle">Terima kasih! Pesananmu sedang kami proses.<br>Admin akan mengkonfirmasi setelah pembayaran terverifikasi.</p>
-        <div class="button-group">
-            <a href="{{ url('/') }}" class="btn-home"><i class="fa-solid fa-house"></i> Kembali ke Beranda</a>
-        </div>
-    </main>
-    <script src="{{ asset('js/user/sukses.js') }}"></script>
+
+<div class="card">
+    <div class="icon-wrap">
+        <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <h1 class="title">Pesanan Berhasil!</h1>
+    <p class="sub">
+        Terima kasih! Pesananmu sedang kami proses.<br>
+        Admin akan mengkonfirmasi setelah pembayaran terverifikasi.
+    </p>
+    <div class="btn-group">
+        <a href="{{ url('/') }}" class="btn-home">
+            <i class="fa-solid fa-house"></i> Kembali ke Beranda
+        </a>
+    </div>
+</div>
+
 </body>
 </html>

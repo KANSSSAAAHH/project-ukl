@@ -15,7 +15,9 @@
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,11 +28,12 @@ body {
     background: linear-gradient(135deg, #fdf8ee, #f9f0d8, #f9f3e2);
     color: var(--text-dark);
     min-height: 100vh;
-    line-height: 1.5;
 }
 
-/* ===== Navigation ===== */
-.navbar {
+/* =====================
+   NAVBAR
+===================== */
+nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -97,14 +100,11 @@ body {
     border: none;
     cursor: pointer;
     font-family: inherit;
-    transition: background var(--transition);
 }
 
-.nav-cta:hover {
-    background: var(--crimson-soft);
-}
-
-/* ===== Page Layout ===== */
+/* =====================
+   PAGE LAYOUT
+===================== */
 .page {
     padding: 100px 40px 60px;
     max-width: 800px;
@@ -119,14 +119,16 @@ body {
     margin-bottom: 4px;
 }
 
-.page-subtitle {
+.page-sub {
     color: var(--text-light);
     font-size: 0.92rem;
     margin-bottom: 32px;
 }
 
-/* ===== Status Badges ===== */
-.status-badge {
+/* =====================
+   STATUS BADGE
+===================== */
+.badge {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -138,56 +140,34 @@ body {
     text-transform: uppercase;
 }
 
-.status-badge.pending,
-.status-badge.menunggu {
-    background: #fef9c3;
-    color: #854d0e;
-}
+.badge-menunggu { background: #fef9c3; color: #854d0e; }
+.badge-diproses  { background: #dbeafe; color: #1d4ed8; }
+.badge-selesai   { background: #dcfce7; color: #15803d; }
+.badge-pending   { background: #fef3c7; color: #92400e; }
+.badge-lunas     { background: #dcfce7; color: #15803d; }
 
-.status-badge.processing,
-.status-badge.diproses {
-    background: #dbeafe;
-    color: #1d4ed8;
-}
-
-.status-badge.completed,
-.status-badge.selesai {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.status-badge.payment-pending {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-.status-badge.payment-paid,
-.status-badge.lunas {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-/* ===== Order List & Cards ===== */
-.order-list {
+/* =====================
+   CARD PESANAN
+===================== */
+.pesanan-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.order-card {
+.pesanan-card {
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: 0 4px 20px rgba(139, 26, 26, 0.08);
     overflow: hidden;
-    transition: box-shadow var(--transition), transform var(--transition);
+    transition: box-shadow var(--transition);
 }
 
-.order-card:hover {
+.pesanan-card:hover {
     box-shadow: var(--shadow-warm);
-    transform: translateY(-2px);
 }
 
-.order-header {
+.pesanan-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -197,34 +177,29 @@ body {
     gap: 8px;
 }
 
-.order-id {
+.pesanan-id {
     font-weight: 700;
     color: var(--text-dark);
     font-size: 0.92rem;
 }
 
-.order-id span {
+.pesanan-id span {
     color: var(--crimson);
 }
 
-.order-date {
+.pesanan-tgl {
     color: var(--text-light);
     font-size: 0.8rem;
 }
 
-.order-status-group {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.order-body {
+.pesanan-body {
     padding: 16px 20px;
 }
 
-/* ===== Product Items ===== */
-.product-item {
+/* =====================
+   PRODUK ITEM
+===================== */
+.produk-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -232,19 +207,18 @@ body {
     border-bottom: 1px solid rgba(201, 146, 58, 0.08);
 }
 
-.product-item:last-child {
+.produk-item:last-child {
     border-bottom: none;
 }
 
-.product-detail-wrapper {
+.produk-detail-wrapper {
     display: flex;
     align-items: center;
     gap: 14px;
     flex: 1;
-    min-width: 0;
 }
 
-.product-image {
+.produk-img {
     width: 60px;
     height: 60px;
     border-radius: 10px;
@@ -253,7 +227,7 @@ body {
     flex-shrink: 0;
 }
 
-.product-image-placeholder {
+.produk-img-placeholder {
     width: 60px;
     height: 60px;
     border-radius: 10px;
@@ -266,35 +240,32 @@ body {
     flex-shrink: 0;
 }
 
-.product-info {
+.produk-info {
     flex: 1;
-    min-width: 0;
 }
 
-.product-name {
+.produk-nama {
     font-weight: 600;
     font-size: 0.95rem;
     color: var(--text-dark);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-.product-qty {
+.produk-qty {
     color: var(--text-light);
     font-size: 0.8rem;
     margin-top: 2px;
 }
 
-.product-subtotal {
+.produk-subtotal {
     font-weight: 700;
     color: var(--crimson);
     font-size: 0.9rem;
-    white-space: nowrap;
 }
 
-/* ===== Order Footer ===== */
-.order-footer {
+/* =====================
+   PESANAN FOOTER
+===================== */
+.pesanan-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -304,26 +275,28 @@ body {
     gap: 10px;
 }
 
-.order-total-label {
+.pesanan-total-label {
     font-size: 0.82rem;
     color: var(--text-light);
 }
 
-.order-total {
+.pesanan-total {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     font-weight: 800;
     color: var(--crimson);
 }
 
+/* =====================
+   TOMBOL AKSI
+===================== */
 .footer-actions {
     display: flex;
     gap: 8px;
     align-items: center;
 }
 
-/* ===== Buttons ===== */
-.btn-view {
+.btn-detail {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -338,11 +311,12 @@ body {
     transition: var(--transition);
 }
 
-.btn-view:hover {
+.btn-detail:hover {
     background: var(--crimson);
     color: var(--white);
 }
 
+/* TOMBOL RATING EMAS */
 .btn-rating {
     display: inline-flex;
     align-items: center;
@@ -356,7 +330,7 @@ body {
     text-decoration: none;
     margin-top: 6px;
     box-shadow: 0 4px 10px rgba(201, 146, 58, 0.15);
-    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    transition: var(--transition);
 }
 
 .btn-rating:hover {
@@ -365,7 +339,8 @@ body {
     opacity: 0.95;
 }
 
-.btn-rated {
+/* BADGE SUDAH DINILAI */
+.btn-rating-success {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -378,10 +353,11 @@ body {
     font-weight: 700;
     margin-top: 6px;
     user-select: none;
-    cursor: default;
 }
 
-/* ===== Empty State ===== */
+/* =====================
+   EMPTY STATE
+===================== */
 .empty-state {
     text-align: center;
     padding: 80px 20px;
@@ -393,12 +369,6 @@ body {
     margin-bottom: 16px;
     display: block;
     color: var(--gold-light);
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
 }
 
 .empty-state h3 {
@@ -408,11 +378,7 @@ body {
     margin-bottom: 8px;
 }
 
-.empty-state p {
-    margin-bottom: 24px;
-}
-
-.btn-shop {
+.btn-belanja {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -424,124 +390,48 @@ body {
     text-decoration: none;
     margin-top: 16px;
     box-shadow: 0 6px 24px rgba(139, 26, 26, 0.25);
-    transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.btn-shop:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(139, 26, 26, 0.4);
-}
-
-/* ===== Responsive ===== */
+/* =====================
+   RESPONSIVE
+===================== */
 @media (max-width: 768px) {
-    .navbar {
+    nav {
         padding: 0 20px;
     }
-    
+
     .page {
         padding: 88px 16px 48px;
     }
-    
-    .order-header {
+
+    .pesanan-header {
         flex-direction: column;
         align-items: flex-start;
     }
-    
-    .product-item {
+
+    .produk-item {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
     }
-    
-    .product-subtotal {
+
+    .produk-subtotal {
         text-align: right;
     }
-    
-    .order-footer {
+
+    .pesanan-footer {
         flex-direction: column;
         align-items: stretch;
         text-align: center;
     }
-    
+
     .footer-actions {
         flex-direction: column;
         width: 100%;
     }
-    
-    .btn-view {
+
+    .btn-detail {
         width: 100%;
         justify-content: center;
     }
 }
-
-@media (max-width: 480px) {
-    .nav-logo span {
-        display: none;
-    }
-    
-    .page-title {
-        font-size: 1.5rem;
-    }
-    
-    .product-image,
-    .product-image-placeholder {
-        width: 50px;
-        height: 50px;
-        font-size: 1.1rem;
-    }
-    
-    .product-name {
-        font-size: 0.9rem;
-    }
-    
-    .order-total {
-        font-size: 1rem;
-    }
-    
-    .status-badge {
-        font-size: 0.7rem;
-        padding: 3px 10px;
-    }
-}
-
-/* ===== Print Styles ===== */
-@media print {
-    .navbar,
-    .btn-view,
-    .btn-rating,
-    .btn-shop {
-        display: none;
-    }
-    
-    .page {
-        padding: 20px;
-        max-width: none;
-    }
-    
-    .order-card {
-        box-shadow: none;
-        border: 1px solid #ddd;
-        break-inside: avoid;
-    }
-    
-    .product-image {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-}
-
-/* ===== Utility Classes ===== */
-.text-truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mt-8 { margin-top: 8px; }
-.mb-8 { margin-bottom: 8px; }
