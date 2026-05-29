@@ -8,8 +8,12 @@
     --radius: 16px; --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; background: linear-gradient(135deg, #fdf8ee 0%, #f9f0d8 50%, #f9f3e2 100%); color: var(--text-dark); }
 
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background: #ffffff; 
+    color: var(--text-dark); 
+}
 /* NAVBAR */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 40px; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(139,26,26,0.15); transition: box-shadow var(--transition); }
 nav.scrolled { box-shadow: 0 4px 30px rgba(139,26,26,0.12); background: rgba(255,255,255,0.98); }

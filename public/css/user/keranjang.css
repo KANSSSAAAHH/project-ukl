@@ -25,7 +25,7 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: linear-gradient(135deg, #fdf8ee, #f9f0d8, #f9f3e2);
+    background: #FFFDF8;
     color: var(--text-dark);
     min-height: 100vh;
 }
@@ -335,14 +335,6 @@ nav {
     padding: 80px 20px;
     color: var(--text-light);
 }
-
-.empty-state i {
-    font-size: 4rem;
-    margin-bottom: 16px;
-    display: block;
-    color: var(--gold-light);
-}
-
 .empty-state h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
@@ -365,4 +357,16 @@ nav {
     .keranjang-item {
         flex-wrap: wrap;
     }
+}
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-light);
+}
+
+.empty-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
 }

@@ -45,14 +45,13 @@
     @endif
 
     @if($keranjang->isEmpty())
-        <div class="empty-state">
-            <i class="fa-solid fa-basket-shopping"></i>
-            <h3>Keranjangmu masih kosong</h3>
-            <p style="margin-bottom:24px;">Yuk, pilih kue tradisional favoritmu!</p>
-            <a href="{{ url('/produk') }}" class="btn-checkout">
-                <i class="fa-solid fa-store"></i> Lihat Produk
-            </a>
-        </div>
+<div class="empty-state">
+    <h3>Keranjang masih kosong</h3>
+    <p style="margin-bottom:24px;">Belum ada produk yang kamu pilih.</p>
+    <a href="{{ url('/produk') }}" class="btn-checkout">
+        Lihat Produk
+    </a>
+</div>
     @else
         <div class="keranjang-list">
             @foreach($keranjang as $item)

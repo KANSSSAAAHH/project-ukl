@@ -156,10 +156,10 @@
         <div class="max-w">
             <div class="about-grid">
                 <div class="about-images reveal">
-                    <img class="about-img-a" src="{{ asset('images/2.png') }}" alt="Proses Pembuatan Kue">
+                    <img class="about-img-a" src="{{ asset('images/kue-tradisional.png') }}" alt="Proses Pembuatan Kue">
                     <img class="about-img-b" src="{{ asset('images/daunkering.png') }}" alt="Kue Tradisional">
                     <div class="about-badge">
-                        <span>SEJAK</span><strong>2010</strong><span>LOKAL</span>
+                        <span>SEJAK</span><strong>2010</strong>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-1">
@@ -235,13 +235,13 @@
                     </div>
                 </a>
                 <a href="{{ url('/produk') }}?kategori=kering" class="product-card-white" style="text-decoration:none;">
-                    <img src="{{ asset('images/nastarkeranjang.png') }}" alt="Kue Kering">
+                    <img src="{{ asset('images/bolot.png') }}" alt="Kue Kering">
                     <div class="product-card-white-body">
                         <div class="product-card-white-tag">Kue Kering</div>
                         <div class="product-card-white-name">Kue Kering Premium</div>
                         <div class="product-card-white-desc">Nastar, kastengel, putri salju, dan aneka kue kering renyah untuk hampers dan oleh-oleh spesial.</div>
                         <div class="product-card-white-footer">
-                            <div class="product-card-white-price">Mulai Rp 120.000</div>
+                            <div class="product-card-white-price">Mulai Rp 80.000</div>
                             <div class="product-card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                         </div>
                     </div>

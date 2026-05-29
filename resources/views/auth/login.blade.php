@@ -199,35 +199,35 @@ html, body {
 
 .input-wrap i {
     position: absolute;
-    left: 14px;
+    left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-light);
-    font-size: 0.88rem;
+    color: #b58b67;
+    font-size: 0.9rem;
 }
 
 .form-control {
     width: 100%;
-    padding: 12px 14px 12px 40px;
-    border: 1.5px solid #e8d8c4;
-    border-radius: 12px;
-    font-size: 0.88rem;
+    padding: 14px 16px 14px 44px;
+    border: 1.5px solid #d9b9b9;
+    border-radius: 16px;
+    font-size: 0.92rem;
     font-family: inherit;
     color: var(--text-dark);
-    background: var(--cream);
-    transition: border-color 0.3s, background 0.3s;
+    background: #ffffff;
+    transition: all 0.25s ease;
     outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
 .form-control:focus {
     border-color: var(--crimson);
-    background: var(--white);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(139, 26, 26, 0.08);
 }
-
 .form-control::placeholder {
     color: #b0956e;
 }
-
 .error-msg {
     font-size: 0.75rem;
     color: var(--crimson);
