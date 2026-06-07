@@ -22,22 +22,24 @@
             <span>PawonLokal</span>
         </a>
 
-        <ul class="nav-links">
-            <li><a href="{{ url('/') }}" class="active">Home</a></li>
-            <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
-            <li><a href="{{ url('/produk') }}">Produk</a></li>
-
-            @auth
-                <li>
-                    <form action="{{ route('logout') }}" method="POST" style="display:inline" id="nav-logout-form">
-                        @csrf
-                        <button type="submit" class="nav-cta">Logout</button>
-                    </form>
-                </li>
-            @else
-                <li><a href="{{ url('/login') }}" class="nav-cta">Login</a></li>
-            @endauth
-        </ul>
+<ul class="nav-links">
+    <li><a href="{{ url('/') }}" class="active">Home</a></li>
+    <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
+    <li><a href="{{ url('/produk') }}">Produk</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+    @auth
+        <li>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline" id="nav-logout-form">
+                @csrf
+                <button type="submit" class="nav-cta">Logout</button>
+            </form>
+        </li>
+    @else
+        <li>
+            <a href="{{ url('/login') }}" class="nav-cta">Login</a>
+        </li>
+    @endauth
+</ul>
 
         <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -49,6 +51,7 @@
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/about') }}">Tentang Kami</a>
         <a href="{{ url('/produk') }}">Produk</a>
+        <a href="#kontak">Kontak</a>
         @auth
             <a href="#" onclick="event.preventDefault(); document.getElementById('mobile-logout-form').submit();" style="color:var(--crimson);font-weight:700;">Logout →</a>
             <form id="mobile-logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
@@ -84,11 +87,10 @@
                 <a href="{{ url('/produk') }}" class="btn-primary">
                     Lihat Produk
                 </a>
-                <a href="https://wa.me/6285232411498" target="_blank" class="btn-outline">
+                <a href="#kontak" class="btn-outline">
                     Hubungi Kami
                 </a>
             </div>
-
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-num" data-count="200">0+</div>
@@ -104,8 +106,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
+    </section>  
     {{-- PROSES KUALITAS --}}
     <section class="proses-kualitas">
         <div class="max-w">
@@ -337,6 +338,133 @@
                 <button class="carousel-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
+    </section>
+        {{-- HUBUNGI KAMI --}}
+    <section id="kontak" class="contact-section reveal">
+        <div class="max-w contact-inner">
+            <div class="section-header contact-header">
+                <div>
+                    <div class="section-label">Hubungi Kami</div>
+                    <h2 class="section-title">Konsultasi cepat untuk membantu Anda memilih kue terbaik</h2>
+                    <p class="section-sub">Hubungi tim PawonLokal untuk konsultasi produk, ketersediaan, atau bantuan pemesanan dengan layanan personal.</p>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card contact-info-card">
+                    <div class="contact-card-head">
+                        <h3>Informasi Kontak</h3>
+                        <p>Tim kami siap membantu setiap hari kerja. Hubungi kami langsung melalui WhatsApp untuk jawaban cepat.</p>
+                    </div>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <span>WhatsApp</span>
+                                <a href="https://wa.me/6285232411498" target="_blank">+62 852-3241-1498</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <span>Alamat</span>
+                                <p>Dsn. Kalitengah Ds. Bangun RT.01 RW.01 Kec. Pungging Kab. Mojokerto</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <span>Jam Operasional</span>
+                                <p>Senin–Sabtu, 07.00–17.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card contact-form-card">
+                    <div class="contact-card-head">
+                        <h3>Form Konsultasi</h3>
+                        <p>Isi data singkat dan kirim langsung ke WhatsApp kami untuk respons cepat.</p>
+                    </div>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-row">
+                            <label for="contactName">Nama Lengkap</label>
+                            <input type="text" id="contactName" name="name" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="contactPhone">Nomor WhatsApp</label>
+                            <input type="tel" id="contactPhone" name="phone" placeholder="62812xxxxxxx" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="contactProduct">Produk yang diminati</label>
+                            <input type="text" id="contactProduct" name="product" placeholder="Contoh: Klepon, Nastar" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="contactMessage">Pesan</label>
+                            <textarea id="contactMessage" name="message" rows="5" placeholder="Tuliskan pesan atau pertanyaan Anda" required></textarea>
+                        </div>
+                        <button type="button" id="sendWhatsappBtn" class="btn-contact">Kirim ke WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps?q=Dsn.%20Kalitengah%20Ds.%20Bangun%20RT.01%20RW.01%20Kec.%20Pungging%20Kab.%20Mojokerto&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <style>
+            html { scroll-behavior: smooth; }
+            .contact-section { padding: 72px 0 40px; background: #f8ede4; }
+            .contact-inner { padding: 0 20px; }
+            .contact-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 32px; }
+            .contact-header .section-label { color: #7d1f33; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; }
+            .contact-header .section-title { font-size: clamp(2.1rem, 3vw, 3rem); line-height: 1.05; color: #3a1f1f; margin-bottom: 16px; }
+            .contact-header .section-sub { max-width: 620px; color: #5d4035; line-height: 1.75; }
+            .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+            .contact-card { background: #ffffff; border-radius: 32px; padding: 34px; box-shadow: 0 30px 80px rgba(92, 39, 39, 0.12); border: 1px solid rgba(125, 31, 51, 0.08); transition: transform .3s ease, box-shadow .3s ease; }
+            .contact-card:hover { transform: translateY(-4px); box-shadow: 0 36px 90px rgba(92, 39, 39, 0.18); }
+            .contact-card-head h3 { font-size: 1.45rem; color: #3a1f1f; margin-bottom: 10px; }
+            .contact-card-head p { color: #68514b; line-height: 1.7; }
+            .contact-list { display: grid; gap: 18px; margin-top: 18px; }
+            .contact-item { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+            .contact-item i { color: #a73b58; font-size: 1.2rem; margin-top: 4px; }
+            .contact-item span { display: block; font-weight: 700; color: #3a1f1f; margin-bottom: 4px; }
+            .contact-item p, .contact-item a { margin: 0; color: #6d4d44; line-height: 1.7; text-decoration: none; }
+            .contact-item a:hover { color: #7d1f33; }
+            .contact-form-card form { display: grid; gap: 18px; }
+            .form-row label { display: block; margin-bottom: 8px; color: #5b4138; font-weight: 600; }
+            .form-row input, .form-row textarea { width: 100%; padding: 16px 18px; border: 1px solid #e9ddd4; border-radius: 20px; background: #fcf6f0; color: #4e3a34; font-size: 1rem; transition: border-color .24s ease, box-shadow .24s ease; }
+            .form-row input:focus, .form-row textarea:focus { outline: none; border-color: #a73b58; box-shadow: 0 0 0 5px rgba(167, 59, 88, 0.12); }
+            .btn-contact { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 16px 18px; border: none; border-radius: 20px; background: linear-gradient(135deg, #7d1f33 0%, #b33b58 100%); color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform .24s ease, box-shadow .24s ease, opacity .24s ease; box-shadow: 0 18px 40px rgba(125, 31, 51, 0.22); }
+            .btn-contact:hover { transform: translateY(-2px); opacity: 0.98; box-shadow: 0 22px 46px rgba(125, 31, 51, 0.26); }
+            .contact-map { margin-top: 38px; overflow: hidden; border-radius: 30px; box-shadow: 0 28px 90px rgba(92, 39, 39, 0.1); }
+            .contact-map iframe { width: 100%; min-height: 400px; border: 0; display: block; }
+            @media (max-width: 1080px) { .contact-grid { grid-template-columns: 1fr; } }
+            @media (max-width: 780px) { .contact-inner { padding: 0 16px; } .contact-header { flex-direction: column; } .contact-card { padding: 26px; } .contact-header .section-title { font-size: 2.25rem; } }
+        </style>
+
+        <script>
+            (function(){
+                const sendBtn = document.getElementById('sendWhatsappBtn');
+                sendBtn.addEventListener('click', function(){
+                    const name = document.getElementById('contactName').value.trim();
+                    const phone = document.getElementById('contactPhone').value.trim();
+                    const product = document.getElementById('contactProduct').value.trim();
+                    const message = document.getElementById('contactMessage').value.trim();
+
+                    if(!name || !phone || !product || !message){
+                        alert('Semua field wajib diisi.');
+                        return;
+                    }
+
+                    const owner = '6285232411498';
+                    const text = `Halo PawonLokal,\n\nNama: ${name}\nNo WhatsApp: ${phone}\nProduk: ${product}\n\nPesan:\n${message}\n\nSaya ingin berkonsultasi mengenai produk PawonLokal.`;
+                    const url = 'https://wa.me/' + owner + '?text=' + encodeURIComponent(text);
+                    window.open(url, '_blank');
+                });
+            })();
+        </script>
     </section>
 
     {{-- CTA BAND --}}
