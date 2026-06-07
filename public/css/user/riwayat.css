@@ -10,14 +10,11 @@
     --text-mid: #5C3317;
     --text-light: #9E7650;
     --white: #FFFFFF;
-    --shadow-warm: 0 8px 40px rgba(139, 26, 26, 0.15);
     --radius: 16px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -25,19 +22,15 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: linear-gradient(135deg, #fdf8ee, #f9f0d8, #f9f3e2);
+    background: #faf8f4;
     color: var(--text-dark);
     min-height: 100vh;
 }
 
-/* =====================
-   NAVBAR
-===================== */
+/* NAVBAR */
 nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 1000;
     padding: 0 40px;
     height: 72px;
@@ -100,11 +93,10 @@ nav {
     border: none;
     cursor: pointer;
     font-family: inherit;
+    font-size: 0.92rem;
 }
 
-/* =====================
-   PAGE LAYOUT
-===================== */
+/* PAGE */
 .page {
     padding: 100px 40px 60px;
     max-width: 800px;
@@ -125,19 +117,15 @@ nav {
     margin-bottom: 32px;
 }
 
-/* =====================
-   STATUS BADGE
-===================== */
+/* BADGE */
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
     padding: 4px 12px;
     border-radius: 50px;
     font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
 .badge-menunggu { background: #fef9c3; color: #854d0e; }
@@ -146,70 +134,61 @@ nav {
 .badge-pending   { background: #fef3c7; color: #92400e; }
 .badge-lunas     { background: #dcfce7; color: #15803d; }
 
-/* =====================
-   CARD PESANAN
-===================== */
+/* CARD PESANAN */
 .pesanan-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
 .pesanan-card {
     background: var(--white);
     border-radius: var(--radius);
-    box-shadow: 0 4px 20px rgba(139, 26, 26, 0.08);
+    border: 0.5px solid rgba(139, 26, 26, 0.1);
     overflow: hidden;
-    transition: box-shadow var(--transition);
+    transition: border-color var(--transition);
 }
 
 .pesanan-card:hover {
-    box-shadow: var(--shadow-warm);
+    border-color: rgba(139, 26, 26, 0.25);
 }
 
 .pesanan-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(201, 146, 58, 0.15);
+    padding: 14px 20px;
+    border-bottom: 0.5px solid rgba(201, 146, 58, 0.12);
     flex-wrap: wrap;
     gap: 8px;
 }
 
 .pesanan-id {
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text-dark);
-    font-size: 0.92rem;
-}
-
-.pesanan-id span {
-    color: var(--crimson);
+    font-size: 0.9rem;
 }
 
 .pesanan-tgl {
     color: var(--text-light);
     font-size: 0.8rem;
+    margin-top: 2px;
 }
 
 .pesanan-body {
-    padding: 16px 20px;
+    padding: 14px 20px;
 }
 
-/* =====================
-   PRODUK ITEM
-===================== */
+/* PRODUK ITEM */
 .produk-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(201, 146, 58, 0.08);
+    padding: 12px 0;
+    border-bottom: 0.5px solid rgba(201, 146, 58, 0.08);
 }
 
-.produk-item:last-child {
-    border-bottom: none;
-}
+.produk-item:last-child { border-bottom: none; }
 
 .produk-detail-wrapper {
     display: flex;
@@ -219,8 +198,8 @@ nav {
 }
 
 .produk-img {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: 10px;
     object-fit: cover;
     background: var(--cream-dark);
@@ -228,25 +207,18 @@ nav {
 }
 
 .produk-img-placeholder {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: 10px;
     background: var(--cream-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    font-size: 1.3rem;
     flex-shrink: 0;
 }
 
-.produk-info {
-    flex: 1;
-}
+.produk-info { flex: 1; }
 
 .produk-nama {
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 500;
+    font-size: 0.92rem;
     color: var(--text-dark);
 }
 
@@ -257,39 +229,36 @@ nav {
 }
 
 .produk-subtotal {
-    font-weight: 700;
+    font-weight: 600;
     color: var(--crimson);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 }
 
-/* =====================
-   PESANAN FOOTER
-===================== */
+/* PESANAN FOOTER */
 .pesanan-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 20px;
-    background: var(--cream);
+    padding: 12px 20px;
+    background: #fafafa;
+    border-top: 0.5px solid rgba(201, 146, 58, 0.1);
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .pesanan-total-label {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--text-light);
 }
 
 .pesanan-total {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--crimson);
 }
 
-/* =====================
-   TOMBOL AKSI
-===================== */
+/* TOMBOL */
 .footer-actions {
     display: flex;
     gap: 8px;
@@ -299,16 +268,15 @@ nav {
 .btn-detail {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
     background: transparent;
     color: var(--crimson);
-    border: 1.5px solid var(--crimson);
+    border: 0.5px solid rgba(139, 26, 26, 0.4);
     padding: 8px 18px;
     border-radius: 50px;
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
-    transition: var(--transition);
+    transition: background var(--transition), color var(--transition);
 }
 
 .btn-detail:hover {
@@ -316,59 +284,41 @@ nav {
     color: var(--white);
 }
 
-/* TOMBOL RATING EMAS */
+/* RATING */
 .btn-rating {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background: linear-gradient(135deg, var(--gold), #B37D2B);
+    background: var(--gold);
     color: var(--white);
     padding: 4px 14px;
     border-radius: 50px;
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 500;
     text-decoration: none;
     margin-top: 6px;
-    box-shadow: 0 4px 10px rgba(201, 146, 58, 0.15);
-    transition: var(--transition);
+    transition: opacity var(--transition);
 }
 
-.btn-rating:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(201, 146, 58, 0.3);
-    opacity: 0.95;
-}
+.btn-rating:hover { opacity: 0.85; }
 
-/* BADGE SUDAH DINILAI */
 .btn-rating-success {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
     background: #dcfce7;
     color: #15803d;
-    border: 1px solid #bbf7d0;
+    border: 0.5px solid #bbf7d0;
     padding: 4px 14px;
     border-radius: 50px;
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 500;
     margin-top: 6px;
-    user-select: none;
 }
 
-/* =====================
-   EMPTY STATE
-===================== */
+/* EMPTY STATE */
 .empty-state {
     text-align: center;
     padding: 80px 20px;
     color: var(--text-light);
-}
-
-.empty-state i {
-    font-size: 4rem;
-    margin-bottom: 16px;
-    display: block;
-    color: var(--gold-light);
 }
 
 .empty-state h3 {
@@ -378,60 +328,33 @@ nav {
     margin-bottom: 8px;
 }
 
+.empty-state p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
 .btn-belanja {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, var(--crimson), var(--crimson-soft));
+    background: var(--crimson);
     color: var(--white);
     padding: 12px 28px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
-    margin-top: 16px;
-    box-shadow: 0 6px 24px rgba(139, 26, 26, 0.25);
+    transition: background var(--transition);
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
+.btn-belanja:hover { background: #5C0D0D; }
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    nav {
-        padding: 0 20px;
-    }
-
-    .page {
-        padding: 88px 16px 48px;
-    }
-
-    .pesanan-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .produk-item {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
-
-    .produk-subtotal {
-        text-align: right;
-    }
-
-    .pesanan-footer {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-    }
-
-    .footer-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn-detail {
-        width: 100%;
-        justify-content: center;
-    }
+    nav { padding: 0 20px; }
+    .page { padding: 88px 16px 48px; }
+    .pesanan-header { flex-direction: column; align-items: flex-start; }
+    .produk-item { flex-direction: column; align-items: stretch; gap: 10px; }
+    .produk-subtotal { text-align: right; }
+    .pesanan-footer { flex-direction: column; align-items: stretch; text-align: center; }
+    .footer-actions { flex-direction: column; width: 100%; }
+    .btn-detail { width: 100%; justify-content: center; }
 }

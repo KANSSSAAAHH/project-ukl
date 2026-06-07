@@ -133,9 +133,10 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(139,26,26,0.12); background: rgba(255
     box-shadow: 0 8px 32px rgba(201,146,58,0.45);
     position: relative;
     animation: floatBounceDelay 2s ease-in-out infinite;
-    animation-delay: 1s; /* bounce bergantian dengan keranjang */
+    animation-delay: 0s;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .floating-pesanan:hover {
     transform: scale(1.15) !important;
     box-shadow: 0 12px 40px rgba(201,146,58,0.6);
