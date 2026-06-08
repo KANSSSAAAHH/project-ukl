@@ -74,13 +74,14 @@
 {{-- NAVBAR --}}
 <nav id="navbar">
     <a href="{{ url('/') }}" class="nav-logo">
-        <img src="{{ asset('images/LogoPL.PNG') }}" alt="PawonLokal">
+        <img src="{{ asset('images/LogoPL3.PNG') }}" alt="PawonLokal">
         <span>PawonLokal</span>
     </a>
     <ul class="nav-links">
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}" class="active">Produk</a></li>
+        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
         @auth
             <li>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
@@ -100,6 +101,7 @@
     <a href="{{ url('/') }}">Home</a>
     <a href="{{ url('/about') }}">Tentang Kami</a>
     <a href="{{ url('/produk') }}" style="color:var(--crimson);font-weight:700">Produk</a>
+    <a href="{{ url('/kontak') }}">Kontak</a>
     @auth
         @if(auth()->user()->role === 'customer')
             <a href="{{ url('/keranjang') }}">Keranjang</a>
@@ -253,7 +255,7 @@
         <div class="footer-grid">
             <div>
                 <div class="footer-brand-logo">
-                    <img src="{{ asset('images/LogoPL.PNG') }}" alt="PawonLokal">
+                    <img src="{{ asset('images/LogoPL3.PNG') }}" alt="PawonLokal">
                     <span>PawonLokal</span>
                 </div>
                 <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>
@@ -267,6 +269,7 @@
                     <li><a href="{{ url('/') }}">› Home</a></li>
                     <li><a href="{{ url('/about') }}">› Tentang Kami</a></li>
                     <li><a href="{{ url('/produk') }}">› Produk</a></li>
+                    <li><a href="{{ url('/kontak') }}">› Kontak</a></li>
                 </ul>
             </div>
             <div>
