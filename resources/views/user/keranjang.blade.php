@@ -13,7 +13,7 @@
 
 <nav>
     <a href="{{ url('/user/home') }}" class="nav-logo">
-        <img src="{{ asset('images/LogoPL.PNG') }}" alt="PawonLokal">
+        <img src="{{ asset('images/LogoPL3.PNG') }}" alt="PawonLokal">
         <span>PawonLokal</span>
     </a>
     <ul class="nav-links">
