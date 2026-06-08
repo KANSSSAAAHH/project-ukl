@@ -62,7 +62,7 @@
     <section class="hero">
         <div class="hero-video-bg">
             <video autoplay muted loop playsinline>
-                <source src="{{ asset('videos/12.mp4') }}" type="video/mp4">
+                <source src="{{ asset('videos/awalan.mp4') }}" type="video/mp4">
             </video>
         </div>
 
