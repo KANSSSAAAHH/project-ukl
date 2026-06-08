@@ -346,6 +346,7 @@
                 <li><a href="{{ url('/') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Home</a></li>
                 <li><a href="{{ url('/about') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Tentang Kami</a></li>
                 <li><a href="{{ url('/produk') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Produk</a></li>
+                <li><a href="{{ url('/kontak') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Kontak</a></li>
             </ul>
         </div>
         <div class="footer-col">
