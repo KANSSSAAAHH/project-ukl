@@ -14,7 +14,7 @@
 
 <nav id="navbar">
     <a href="{{ url('/') }}" class="nav-logo">
-        <img src="{{ asset('images/logoPL.png') }}" alt="PawonLokal Logo">
+        <img src="{{ asset('images/logoPL3.png') }}" alt="PawonLokal Logo">
         <span>PawonLokal</span>
     </a>
     <ul class="nav-links">
@@ -127,7 +127,7 @@
     <div class="footer-grid">
         <div>
             <div class="footer-brand-logo">
-                <img src="{{ asset('images/logoPL.png') }}" alt="PawonLokal">
+                <img src="{{ asset('images/logoPL3.png') }}" alt="PawonLokal">
                 <span>PawonLokal</span>
             </div>
             <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>

@@ -18,7 +18,7 @@
 {{-- NAVBAR - WHITE BACKGROUND --}}
 <nav id="navbar">
     <a href="{{ url('/') }}" class="nav-logo">
-        <img src="{{ asset('images/logoPL.png') }}" alt="PawonLokal Logo">
+        <img src="{{ asset('images/logoPL3.png') }}" alt="PawonLokal Logo">
         <span>PawonLokal</span>
     </a>
 
@@ -26,6 +26,7 @@
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/about') }}" class="active">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}">Produk</a></li>
+        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
         @auth
             <li>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
@@ -47,7 +48,6 @@
 <div class="mobile-menu" id="mobileMenu">
     <a href="{{ url('/') }}">Home</a>
     <a href="{{ url('/about') }}" style="color:var(--crimson);font-weight:700;">Tentang Kami</a>
-    <a href="{{ url('/produk') }}">Produk</a>
     @auth
         <a href="#" onclick="event.preventDefault(); document.getElementById('mobile-logout-form').submit();" style="color:var(--crimson);font-weight:700;">Logout →</a>
         <form id="mobile-logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
@@ -332,7 +332,7 @@
     <div class="footer-grid">
         <div>
             <div class="footer-brand-logo">
-                <img src="{{ asset('images/logoPL.png') }}" alt="PawonLokal">
+                <img src="{{ asset('images/logoPL3.png') }}" alt="PawonLokal">
                 <span>PawonLokal</span>
             </div>
             <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>

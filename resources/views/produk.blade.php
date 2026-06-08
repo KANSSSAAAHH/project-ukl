@@ -17,13 +17,14 @@
 {{-- NAVBAR - WHITE BACKGROUND --}}
 <nav id="navbar">
     <a href="{{ url('/') }}" class="nav-logo">
-        <img src="{{ asset('images/logoPL.png') }}" alt="PawonLokal Logo">
+        <img src="{{ asset('images/logoPL3.png') }}" alt="PawonLokal Logo">
         <span>PawonLokal</span>
     </a>
     <ul class="nav-links">
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}" class="active">Produk</a></li>
+        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
         @auth
             <li>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
@@ -167,7 +168,7 @@
     <div class="footer-grid">
         <div class="footer-brand">
             <div class="footer-brand-logo">
-                <img src="{{ asset('images/logoPL.png') }}" alt="PawonLokal">
+                <img src="{{ asset('images/logoPL3.png') }}" alt="PawonLokal">
                 <span>PawonLokal</span>
             </div>
             <p class="footer-brand-desc">Menghadirkan kue tradisional Nusantara yang autentik, dibuat dengan bahan alami dan resep warisan leluhur.</p>
@@ -181,6 +182,7 @@
                 <li><a href="{{ url('/') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem"></i> Home</a></li>
                 <li><a href="{{ url('/about') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem"></i> Tentang Kami</a></li>
                 <li><a href="{{ url('/produk') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem"></i> Produk</a></li>
+                <li><a href="{{ url('/kontak') }}"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Kontak</a></li>
             </ul>
         </div>
         <div class="footer-col">
