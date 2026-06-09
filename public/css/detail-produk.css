@@ -1,7 +1,7 @@
 :root {
     --crimson: #8B1A1A; --crimson-deep: #5C0D0D; --crimson-soft: #B22222;
     --gold: #C9923A; --gold-light: #E8B86D;
-    --cream: #FDF6ED; --cream-dark: #F5E6CC;
+    --cream: #FFFDF8; --cream-dark: #F5E6CC;
     --brown: #3D1C00; --text-dark: #1E0A00;
     --text-mid: #5C3317; --text-light: #9E7650; --white: #FFFFFF;
     --shadow-warm: 0 8px 40px rgba(139,26,26,0.15);

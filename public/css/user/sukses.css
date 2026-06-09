@@ -23,7 +23,7 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #FDF6ED;
+    background:#FFFDF8;
     color: var(--text-dark);
     min-height: 100vh;
     display: flex;
