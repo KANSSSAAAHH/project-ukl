@@ -205,7 +205,7 @@
             <h4>Kontak</h4>
             <div class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Dsn. Kalitengah Ds. Bangun RT.01 RW.01 Kec. Pungging Kab. Mojokerto</span></div>
             <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+62 852-3241-1498</span></div>
-            <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>halo@pawonlokal.id</span></div>
+            <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>pawonlokal@gmail.com</span></div>
         </div>
     </div>
     <div class="footer-bottom">
