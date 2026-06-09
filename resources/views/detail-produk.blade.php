@@ -19,7 +19,6 @@
     gap: 12px;
     z-index: 999;
 }
-
 .floating-cart,
 .floating-pesanan {
     width: 54px;
@@ -34,23 +33,13 @@
     position: relative;
     text-decoration: none;
 }
-
-.floating-cart {
-    background: #8B1A1A;
-    color: #fff;
-}
-
-.floating-pesanan {
-    background: #C9923A;
-    color: #fff;
-}
-
+.floating-cart { background: #8B1A1A; color: #fff; }
+.floating-pesanan { background: #C9923A; color: #fff; }
 .floating-cart:hover,
 .floating-pesanan:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
-
 .floating-cart-badge {
     position: absolute;
     top: -4px;
@@ -81,6 +70,7 @@
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
         <li><a href="{{ url('/produk') }}" class="active">Produk</a></li>
+        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
         @auth
             <li>
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
@@ -100,6 +90,7 @@
     <a href="{{ url('/') }}">Home</a>
     <a href="{{ url('/about') }}">Tentang Kami</a>
     <a href="{{ url('/produk') }}" style="color:var(--crimson);font-weight:700">Produk</a>
+    <a href="{{ url('/kontak') }}">Kontak</a>
     @auth
         @if(auth()->user()->role === 'customer')
             <a href="{{ url('/keranjang') }}">Keranjang</a>
@@ -232,11 +223,9 @@
     @if(auth()->user()->role === 'customer')
     @php $jumlahKeranjang = \App\Models\Keranjang::where('id_user', auth()->id())->count(); @endphp
     <div class="floating-buttons">
-        {{-- Pesanan Saya --}}
         <a href="{{ route('pesanan.riwayat') }}" class="floating-pesanan" title="Pesanan Saya">
             <i class="fa-solid fa-clock-rotate-left"></i>
         </a>
-        {{-- Keranjang --}}
         <a href="{{ url('/keranjang') }}" class="floating-cart" title="Keranjang">
             <i class="fa-solid fa-basket-shopping"></i>
             @if($jumlahKeranjang > 0)
@@ -267,6 +256,7 @@
                     <li><a href="{{ url('/') }}">› Home</a></li>
                     <li><a href="{{ url('/about') }}">› Tentang Kami</a></li>
                     <li><a href="{{ url('/produk') }}">› Produk</a></li>
+                    <li><a href="{{ url('/kontak') }}">› Kontak</a></li>
                 </ul>
             </div>
             <div>
