@@ -62,7 +62,7 @@
     <section class="hero">
         <div class="hero-video-bg">
             <video autoplay muted loop playsinline>
-                <source src="{{ asset('videos/awalan.mp4') }}" type="video/mp4">
+                <source src="{{ asset('videos/12.mp4') }}" type="video/mp4">
             </video>
         </div>
 
@@ -389,7 +389,7 @@
                 <ul style="list-style:none;">
                     <li class="footer-contact-item"><i class="fa-solid fa-map-pin"></i><span>Dsn. Kalitengah Ds. Bangun RT.01 RW.01 Kec. Pungging Kab. Mojokerto</span></li>
                     <li class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+62 852-3241-1498</span></li>
-                    <li class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>halo@pawonlokal.id</span></li>
+                    <li class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>pawonlokal@gmail.com</span></li>
                     <li class="footer-contact-item"><i class="fa-solid fa-clock"></i><span>Senin–Sabtu, 07.00–17.00 WIB</span></li>
                 </ul>
             </div>
