@@ -7,6 +7,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+    .back-btn{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: #000;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 1000;
+
+    transition: all 0.3s ease;
+}
 :root {
     --crimson: #8B1A1A;
     --crimson-deep: #5C0D0D;
@@ -302,7 +325,9 @@ html, body {
 </style>
 </head>
 <body>
-
+<a href="{{ url('/') }}" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+</a>
 <div class="login-wrapper">
 
     <div class="login-left">
