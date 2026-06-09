@@ -2,7 +2,7 @@
     --crimson: #8B1A1A;
     --crimson-soft: #B22222;
     --gold: #C9923A;
-    --cream: #FDF6ED;
+    --cream: #FFFDF8;
     --cream-dark: #F5E6CC;
     --brown: #3D1C00;
     --text-dark: #1E0A00;
@@ -24,7 +24,7 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #FDF6ED;
+    background: #FFFDF8;
     color: var(--text-dark);
     min-height: 100vh;
 }
