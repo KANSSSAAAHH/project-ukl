@@ -10,6 +10,6 @@ document.getElementById('sendWhatsappBtn').addEventListener('click', function(){
     }
 
     const owner = '6285232411498';
-    const text = `Halo  Admin Pawon Lokal,\n\nNama: ${name}\nNo WhatsApp: ${phone}\nProduk: ${product}\n\nPesan:\n${message}`;
+    const text = `Halo Admin Pawon Lokal,\n\nNama: ${name}\nNo WhatsApp: ${phone}\nProduk: ${product}\n\nPesan:\n${message}`;
     window.open('https://wa.me/' + owner + '?text=' + encodeURIComponent(text), '_blank');
 });

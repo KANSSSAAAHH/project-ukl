@@ -44,6 +44,8 @@
     <a href="{{ url('/') }}">Home</a>
     <a href="{{ url('/about') }}">Tentang Kami</a>
     <a href="{{ url('/produk') }}" style="color:var(--crimson);font-weight:700">Produk</a>
+    <a href="{{ url('/kontak') }}">Kontak</a>
+    
     @auth
         @if(auth()->user()->role === 'customer')
             <a href="{{ url('/keranjang') }}">Keranjang</a>
