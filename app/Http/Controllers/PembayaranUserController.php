@@ -28,10 +28,10 @@ class PembayaranUserController extends Controller
 
         $path = $request->file('bukti_bayar')->store('bukti_bayar', 'public');
         $pembayaran->bukti_bayar = $path;
-        $pembayaran->status = 'lunas';
+        $pembayaran->status = 'pending'; // tetap pending, admin yang konfirmasi
         $pembayaran->save();
 
         return redirect()->route('pesanan.sukses', $id)
-            ->with('success', 'Pembayaran berhasil dikonfirmasi!');
+            ->with('success', 'Bukti pembayaran berhasil diupload! Menunggu konfirmasi admin.');
     }
 }

@@ -97,13 +97,7 @@
                     </div>
                     <div class="metode-grid">
                         <div class="metode-item">
-                            <input type="radio" name="metode" id="gopay" value="GoPay" checked>
-                            <label class="metode-label" for="gopay">
-                                <i class="fa-solid fa-g"></i> GoPay
-                            </label>
-                        </div>
-                        <div class="metode-item">
-                            <input type="radio" name="metode" id="dana" value="Dana">
+                            <input type="radio" name="metode" id="dana" value="Dana" checked>
                             <label class="metode-label" for="dana">
                                 <i class="fa-solid fa-d"></i> Dana
                             </label>

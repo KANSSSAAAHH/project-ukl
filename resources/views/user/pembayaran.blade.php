@@ -56,27 +56,14 @@
         </div>
 
         {{-- PANDUAN SESUAI METODE --}}
-        @if($pembayaran->metode === 'GoPay')
-        <div class="panduan-box gopay">
-            <div class="panduan-title"><i class="fa-solid fa-qrcode"></i> Scan QR Code GoPay</div>
-            <div class="qr-wrap">
-                <img src="{{ asset('images/gopay.png') }}" alt="QR GoPay" class="qr-img">
-            </div>
-            <p class="panduan-note">
-                Buka <strong>GoPay / Gojek</strong> → Bayar → Scan QR di atas<br>
-                Nominal: <strong>Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</strong>
-            </p>
-        </div>
-
-        @elseif($pembayaran->metode === 'Dana')
+        @if($pembayaran->metode === 'Dana')
         <div class="panduan-box dana">
             <div class="panduan-title"><i class="fa-solid fa-mobile-screen"></i> Transfer via Dana</div>
-            <div class="nomor-bayar">+62 852-3241-1498</div>
-            <button class="copy-btn" onclick="copyNomor('+628523241498')">
-                <i class="fa-solid fa-copy"></i> Salin Nomor
-            </button>
+            <div class="qr-wrap">
+                <img src="{{ asset('images/Dana.jpeg') }}" alt="Dana" class="qr-img">
+            </div>
             <p class="panduan-note">
-                Buka <strong>Dana</strong> → Kirim → masukkan nomor di atas<br>
+                Buka <strong>Dana</strong> → Kirim → scan atau masukkan nomor di atas<br>
                 Nominal: <strong>Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</strong><br>
                 Atas nama: <strong>OCA</strong>
             </p>
@@ -96,6 +83,7 @@
             </p>
         </div>
         @endif
+
     </div>
 
     {{-- UPLOAD BUKTI --}}
