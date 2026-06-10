@@ -52,11 +52,6 @@
                         <span class="badge badge-{{ $p->status_pesanan }}">
                             {{ ucfirst($p->status_pesanan) }}
                         </span>
-                        @if($p->pembayaran)
-                            <span class="badge badge-{{ $p->pembayaran->status }}">
-                                {{ ucfirst($p->pembayaran->status) }}
-                            </span>
-                        @endif
                     </div>
                 </div>
 
